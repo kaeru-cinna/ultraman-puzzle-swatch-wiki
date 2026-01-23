@@ -22,12 +22,30 @@
 
   <!-- メイン -->
   <main>
-    <h2 id="sec1">本サイトについて</h2>
-    <p>本サイトは未完成かつ誤った情報が混じっている事がございます。
-    お気づきの際はお問い合わせからコメントにてご連絡いただけますと幸いです。
-    順次更新を行います。</p>
-    <p>公式サイトではございませんので該当アプリの画像が添付できません。
-    あらかじめご了承ください。</p>
+    <h2>ガチャシミュレーター</h2>
+    <section class="gacha-control">
+    <label>
+      ガチャレベル：
+      <select id="gachaLevel">
+        <option value="normal">ノーマル</option>
+        <option value="rare">レア</option>
+      </select>
+    </label>
+
+    <button onclick="draw20()">20連ガチャ</button>
+  </section>
+
+  <section id="results" class="gacha-results"></section>
+
+  <div class="retry-area">
+    <button id="retryButton" onclick="retryGacha()" style="display:none;">
+      もう一度20連
+    </button>
+  </div>
+
+  <p class="notice">
+    ※本シミュレーターは非公式です。実際の排出率とは異なります。
+  </p>
 
     <div class="ad ad-article">広告</div>
 
@@ -48,5 +66,6 @@
 </footer>
 
 <script src="include.js" defer></script>
+<script src="gacha.js" defer></script>
 </body>
 </html>

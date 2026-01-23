@@ -138,6 +138,100 @@ aside {
   opacity: 0.6;
 }
 
+/* ===== ガチャ ===== */
+.gacha-control {
+  text-align: center;
+  margin: 20px 0;
+}
+
+button {
+  padding: 10px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* 結果 */
+.gacha-results {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 12px;
+  padding: 16px;
+}
+
+.gacha-item {
+  background: #132f5c;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  animation: fadeIn 0.3s ease;
+}
+
+/* 画像（なければ自動で消える） */
+.gacha-item img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 6px;
+  display: block;
+}
+
+/* レアリティ */
+.rarity-3 {
+  border: 1px solid #6aa9ff;
+}
+
+.rarity-4 {
+  border: 1px solid #c88cff;
+  box-shadow: 0 0 6px rgba(200,140,255,.6);
+}
+
+.rarity-5 {
+  border: 2px solid gold;
+  box-shadow: 0 0 12px gold;
+  animation: rainbowGlow 1.5s infinite alternate;
+}
+
+/* ★5専用 */
+.rare-hit {
+  animation: rarePop 0.6s ease;
+}
+
+/* 再実行 */
+.retry-area {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#retryButton {
+  padding: 10px 20px;
+  font-size: 16px;
+  background: #1e4fa3;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+}
+
+#retryButton:hover {
+  background: #2d6cdf;
+}
+
+/* アニメ */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes rainbowGlow {
+  from { box-shadow: 0 0 8px gold; }
+  to { box-shadow: 0 0 18px cyan; }
+}
+
+@keyframes rarePop {
+  0% { transform: scale(0.6); opacity: 0; }
+  60% { transform: scale(1.15); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
 /* ===== フッター ===== */
 footer {
   text-align: center;
