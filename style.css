@@ -88,6 +88,31 @@ main h2 {
   padding-left: 10px;
 }
 
+main h3 {
+  position: relative;
+  margin: 12px 0 10px;
+  padding-left: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #cfeeff;
+}
+
+/* 控えめな左ライン */
+main h3::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 3px;
+  height: 60%;
+  transform: translateY(-50%);
+  background: linear-gradient(
+    to bottom,
+    #6ecbff,
+    rgba(110,203,255,0.2)
+  );
+}
+
 /* ===== サイドバー ===== */
 aside {
   background: rgba(0, 30, 60, 0.4);
