@@ -12,6 +12,13 @@ fetch("toc.html")
     document.getElementById("toc-area").innerHTML = html;
   });
 
+/* 人気記事 */
+fetch("article.html")
+  .then(res => res.text())
+  .then(html => {
+    document.getElementById("article-area").innerHTML = html;
+  });
+
 /* 目次折りたたみ */
 window.addEventListener("scroll", () => {
   const toc = document.getElementById("toc");
