@@ -1,3 +1,19 @@
-body {
-  font-family: Meiryo, sans-serif;
+.toc {
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  padding: 15px;
+  list-style: none;
+}
+
+.toc li {
+  margin-bottom: 8px;
+}
+
+.toc a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.toc a:hover {
+  text-decoration: underline;
 }
