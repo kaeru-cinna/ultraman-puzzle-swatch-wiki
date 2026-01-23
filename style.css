@@ -181,8 +181,8 @@ button {
 }
 
 .rarity-4 {
-  border: 1px solid #c88cff;
-  box-shadow: 0 0 6px rgba(200,140,255,.6);
+  border: 1px solid #ff0000;
+  box-shadow: 0 0 6px rgba(200,0,0,0.6);
 }
 
 .rarity-5 {
