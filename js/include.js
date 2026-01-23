@@ -1,19 +1,19 @@
 /* ヘッダー */
-fetch("header.html")
+fetch("../html/header.html")
   .then(res => res.text())
   .then(html => {
     document.getElementById("header").innerHTML = html;
   });
 
 /* 目次 */
-fetch("toc.html")
+fetch("../html/toc.html")
   .then(res => res.text())
   .then(html => {
     document.getElementById("toc-area").innerHTML = html;
   });
 
 /* 人気記事 */
-fetch("article.html")
+fetch("../html/article.html")
   .then(res => res.text())
   .then(html => {
     document.getElementById("article-area").innerHTML = html;
