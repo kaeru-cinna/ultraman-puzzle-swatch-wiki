@@ -151,14 +151,14 @@ footer {
   max-width: 900px;
   margin: 30px auto;
   padding: 20px 18px;
-  background: rgba(200, 200, 200, 0.50); /* 暗めの半透明 */
+  background: rgba(200, 200, 0, 0.50); /* 暗めの半透明 */
   border-radius: 12px;
   box-shadow: 0 0 20px rgba(0, 150, 255, 0.15);
 }
 
 /* 見出し */
 .contact-page h2 {
-  color: #000000;
+  color: #FFFFFF;
 }
 
 /* 説明文 */
