@@ -3,53 +3,64 @@
 <head>
   <meta charset="UTF-8">
   <title>ウルトラマンパズルシュワッチ攻略Wiki</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<!-- ▼ 共通ヘッダー -->
 <div id="header"></div>
 
 <p class="notice">
-※当サイトは「ウルトラマンパズルシュワッチ」の非公式ファン攻略サイトです。  
-公式とは一切関係ありません。
+※当サイトは「ウルトラマンパズルシュワッチ」の非公式ファン攻略サイトです。
 </p>
 
 <div class="container">
 
-  <main>
-    <h2>攻略目次</h2>
-    <ul class="toc">
-      <li><a href="beginner.html">初心者向け攻略</a></li>
-      <li><a href="character.html">ウルトラマン性能解説</a></li>
-      <li><a href="faq.html">よくある質問</a></li>
+  <!-- ▼ 目次（固定＋折りたたみ） -->
+  <nav class="toc-fixed" id="toc">
+    <h3>目次</h3>
+    <ul>
+      <li><a href="#sec1">初心者攻略</a></li>
+      <li><a href="#sec2">コツまとめ</a></li>
+      <li><a href="#sec3">FAQ</a></li>
     </ul>
+  </nav>
 
-    <h2>このサイトについて</h2>
-    <p>
-      ウルトラマンパズルシュワッチを攻略するための非公式Wikiです。
-      無課金・初心者向け情報を中心にまとめています。
-    </p>
+  <!-- ▼ メイン -->
+  <main>
+    <h2 id="sec1">初心者攻略</h2>
+    <p>ここに攻略本文が入ります。</p>
 
-    <p class="update">最終更新日：2026/01/23</p>
+    <h2 id="sec2">コツまとめ</h2>
+    <p>コンボや立ち回りのコツなど。</p>
+
+    <!-- ▼ 広告（安全位置） -->
+    <div class="ad ad-article">広告</div>
+
+    <h2 id="sec3">FAQ</h2>
+    <p>よくある質問。</p>
   </main>
 
+  <!-- ▼ サイドバー -->
   <aside>
     <h3>人気記事</h3>
     <ul>
-      <li><a href="beginner.html">初心者攻略まとめ</a></li>
-      <li><a href="character.html">おすすめウルトラマン</a></li>
+      <li><a href="#">初心者向けまとめ</a></li>
+      <li><a href="#">おすすめキャラ</a></li>
     </ul>
 
-    <div class="ad">広告スペース</div>
+    <div class="ad ad-sidebar">広告</div>
   </aside>
 
 </div>
 
 <footer>
+  <div class="ad ad-footer">広告</div>
   © ウルトラマンパズルシュワッチ攻略Wiki
 </footer>
 
-<script src="include.js"></script>
-
+<!-- ▼ 共通ヘッダー＋目次制御 -->
+<script src="include.js" defer></script>
 </body>
 </html>
