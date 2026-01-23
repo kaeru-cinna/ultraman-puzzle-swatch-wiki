@@ -151,7 +151,7 @@ footer {
   max-width: 900px;
   margin: 30px auto;
   padding: 20px 18px;
-  background: rgba(255, 255, 255, 0.75); /* 暗めの半透明 */
+  background: rgba(10, 20, 35, 0.75); /* 暗めの半透明 */
   border-radius: 12px;
   box-shadow: 0 0 20px rgba(0, 150, 255, 0.15);
 }
