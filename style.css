@@ -232,6 +232,16 @@ button {
   100% { transform: scale(1); opacity: 1; }
 }
 
+/* ===== テーブル ===== */
+table {
+  color: #000000;
+  background: #FFFFFF;
+}
+
+table th{
+  background: #FFF5F5;
+}
+
 /* ===== フッター ===== */
 footer {
   text-align: center;
