@@ -233,13 +233,21 @@ button {
 }
 
 /* ===== テーブル ===== */
+/* 表全体 */
 table {
-  color: #000000;
-  background: #FFFFFF;
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff; /* 白 */
+  color: #000000;           /* 黒文字 */
 }
 
-table th{
-  background: #FFF5F5;
+/* 見出し行 */
+th {
+  background-color: #fff7cc; /* 薄い黄色 */
+  color: #000000;
+  padding: 10px;
+  border: 1px solid #cccccc;
+  text-align: center;
 }
 
 /* ===== フッター ===== */
