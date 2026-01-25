@@ -250,14 +250,6 @@ th {
   text-align: center;
 }
 
-/* データ行 */
-td {
-  color: #000000;
-  padding: 10px;
-  border: 1px solid #cccccc;
-  text-align: center;
-}
-
 /* ===== フッター ===== */
 footer {
   text-align: center;
