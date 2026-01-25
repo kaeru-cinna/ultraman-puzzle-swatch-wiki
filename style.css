@@ -250,6 +250,10 @@ th {
   border: 1px solid #cccccc;
   text-align: center;
 }
+/* 背景色交互 */
+table tr:nth-child(odd) td {
+  background: #eeeeee;
+}
 
 /* ===== フッター ===== */
 footer {
