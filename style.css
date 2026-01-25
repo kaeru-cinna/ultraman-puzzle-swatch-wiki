@@ -239,6 +239,7 @@ table {
   border-collapse: collapse;
   background-color: #ffffff; /* 白 */
   color: #000000;           /* 黒文字 */
+  text-align: center;
 }
 
 /* 見出し行 */
