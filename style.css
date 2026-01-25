@@ -251,7 +251,7 @@ th {
   text-align: center;
 }
 /* 背景色交互 */
-tbody > tr:nth-of-type(even) {
+tbody > tr:nth-of-type(odd) {
   background: #eeeeee;
 }
 
