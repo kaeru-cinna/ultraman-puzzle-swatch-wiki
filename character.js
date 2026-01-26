@@ -6,7 +6,10 @@ const id = params.get("id");
 const characters = {
   ULTRAMAN_ZERO: {
     name: "ウルトラマンゼロ",
-    introduction: "タロウの息子"
+    worksPerformed: "大怪獣バトル ウルトラ銀河伝説 THE MOVIE",
+    height: "49m",
+    weight: "35,000t",
+    introduction: "M78星雲・光の国出身のウルトラヒーロー。<br>ウルトラセブンを父に持ち、ウルトラマンレオ・アストラ兄弟に師事している。"
   },
   ULTRAMAN_TRO: {
     name: "ウルトラセブン",
@@ -17,6 +20,9 @@ const characters = {
 // 表示処理
 if (characters[id]) {
   document.getElementById("name").textContent = characters[id].name;
+  document.getElementById("worksPerformed").textContent = characters[id].worksPerformed;
+  document.getElementById("height").textContent = characters[id].height;
+  document.getElementById("weight").textContent = characters[id].weight;
   document.getElementById("introduction").textContent = characters[id].introduction;
 } else {
   document.getElementById("name").textContent = "キャラが見つかりません";
