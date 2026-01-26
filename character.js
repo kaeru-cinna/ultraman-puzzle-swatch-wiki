@@ -9,7 +9,7 @@ const characters = {
     worksPerformed: "大怪獣バトル ウルトラ銀河伝説 THE MOVIE",
     height: "49m",
     weight: "35,000t",
-    introduction: "M78星雲・光の国出身のウルトラヒーロー。<br>ウルトラセブンを父に持ち、ウルトラマンレオ・アストラ兄弟に師事している。"
+    introduction: "M78星雲・光の国出身のウルトラヒーロー。\nウルトラセブンを父に持ち、ウルトラマンレオ・アストラ兄弟に師事している。"
   },
   ULTRAMAN_TRO: {
     name: "ウルトラセブン",
