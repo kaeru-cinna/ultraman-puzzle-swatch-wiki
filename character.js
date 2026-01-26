@@ -5,7 +5,7 @@ const id = params.get("id");
 // キャラデータ（ここ増やすだけ）
 const characters = {
   ULTRAMAN_ZERO: {
-    name: "ウルトラマン",
+    name: "ウルトラマンゼロ",
     introduction: "タロウの息子"
   },
   ULTRAMAN_TRO: {
