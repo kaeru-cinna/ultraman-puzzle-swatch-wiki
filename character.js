@@ -25,6 +25,20 @@ const characters = {
     weight: "55,000t",
     introduction: "M78星雲・光の国出身。\nウルトラの父とウルトラの母の実子であると同時に、ウルトラ兄弟6番目の弟でもある。宇宙科学警備隊「ZAT」隊員の東 光太郎がウルトラバッジで変身する。\nウルトラ兄弟の中でも特にポテンシャルが高く、「ストリウム光線」や「ウルトラダイナマイト」といった強力な必殺技を持つ。\n光の国へ帰還した後は「宇宙警備隊」の筆頭教官となり、ウルトラマンメビウスを鍛え上げた。"
   },
+  JUGGLUS_JUGGLER: {
+    name: "ジャグラス ジャグラー",
+    worksPerformed: "",
+    height: "m",
+    weight: "",
+    introduction: ""
+  },
+  ZETTON: {
+    name: "ゼットン",
+    worksPerformed: "",
+    height: "m",
+    weight: "",
+    introduction: ""
+  },
   ULTRAMAN_: {
     name: "",
     worksPerformed: "",
