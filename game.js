@@ -11,9 +11,6 @@ let board = [];
 let moves = 0;
 let gameState = "editor";
 let selectedCell = null;
-let selectedItem = null;
-let itemUsed = {A:false,B:false,C:false,D:false};
-let swapBuffer = null;
 
 class Cell {
   constructor(type="normal",color=null,hp=null){
@@ -40,6 +37,7 @@ function initBoard(){
 
 function draw(){
   ctx.clearRect(0,0,canvas.width,canvas.height);
+
   for(let r=0;r<SIZE;r++){
     for(let c=0;c<SIZE;c++){
       let cell=board[r][c];
@@ -65,10 +63,6 @@ function startGame(){
   checkMatches();
 }
 
-function inBounds(r,c){
-  return r>=0&&r<SIZE&&c>=0&&c<SIZE;
-}
-
 function swap(r1,c1,r2,c2){
   let tmp=board[r1][c1];
   board[r1][c1]=board[r2][c2];
@@ -76,59 +70,76 @@ function swap(r1,c1,r2,c2){
 }
 
 function checkMatches(){
-  let matches=[];
+  let clearSet = new Set();
 
+  // 横チェック
   for(let r=0;r<SIZE;r++){
-    for(let c=0;c<SIZE;c++){
-      let cell=board[r][c];
-      if(!cell || cell.type!=="normal")continue;
-
-      let color=cell.color;
-      let line=[[r,c]];
-
-      for(let k=c+1;k<SIZE;k++){
-        if(board[r][k] && board[r][k].type==="normal" && board[r][k].color===color)
-          line.push([r,k]);
-        else break;
+    let count=1;
+    for(let c=1;c<=SIZE;c++){
+      if(
+        c<SIZE &&
+        board[r][c] &&
+        board[r][c-1] &&
+        board[r][c].type==="normal" &&
+        board[r][c-1].type==="normal" &&
+        board[r][c].color===board[r][c-1].color
+      ){
+        count++;
+      } else {
+        if(count>=3){
+          for(let k=0;k<count;k++){
+            clearSet.add(r+","+(c-1-k));
+          }
+        }
+        count=1;
       }
-      if(line.length>=3)matches.push(line);
-
-      line=[[r,c]];
-      for(let k=r+1;k<SIZE;k++){
-        if(board[k][c] && board[k][c].type==="normal" && board[k][c].color===color)
-          line.push([k,c]);
-        else break;
-      }
-      if(line.length>=3)matches.push(line);
     }
   }
 
-  if(matches.length>0){
-    clearMatches(matches);
+  // 縦チェック
+  for(let c=0;c<SIZE;c++){
+    let count=1;
+    for(let r=1;r<=SIZE;r++){
+      if(
+        r<SIZE &&
+        board[r][c] &&
+        board[r-1][c] &&
+        board[r][c].type==="normal" &&
+        board[r-1][c].type==="normal" &&
+        board[r][c].color===board[r-1][c].color
+      ){
+        count++;
+      } else {
+        if(count>=3){
+          for(let k=0;k<count;k++){
+            clearSet.add((r-1-k)+","+c);
+          }
+        }
+        count=1;
+      }
+    }
+  }
+
+  if(clearSet.size>0){
+    clearMatchesFromSet(clearSet);
   }
 }
 
-function clearMatches(matches){
-  let clearSet=new Set();
-
-  matches.forEach(line=>{
-    line.forEach(([r,c])=>{
-      clearSet.add(r+","+c);
-    });
-  });
+function clearMatchesFromSet(clearSet){
 
   // ハイライト
   clearSet.forEach(key=>{
     let [r,c]=key.split(",").map(Number);
-    if(board[r][c])
+    if(board[r][c]){
       board[r][c].highlight=true;
+    }
   });
 
   draw();
 
   setTimeout(()=>{
 
-    // 消去
+    // 実際に消す
     clearSet.forEach(key=>{
       let [r,c]=key.split(",").map(Number);
       board[r][c]=null;
@@ -189,14 +200,17 @@ canvas.addEventListener("click",e=>{
     selectedCell=[r,c];
   }else{
     let [r1,c1]=selectedCell;
+
     if(Math.abs(r1-r)+Math.abs(c1-c)===1){
       swap(r1,c1,r,c);
       moves--;
       document.getElementById("moves").textContent=moves;
       checkMatches();
     }
+
     selectedCell=null;
   }
+
   draw();
 });
 
