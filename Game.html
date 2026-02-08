@@ -3,50 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Custom Match3</title>
+<title>Match3 Reverse Gravity</title>
 <style>
 body{
   margin:0;
   background:#111;
   color:white;
-  font-family:sans-serif;
   text-align:center;
+  font-family:sans-serif;
 }
-#topBar{ padding:10px; }
 #board{
   background:#222;
   touch-action:none;
+  margin-top:10px;
 }
-#ui{ margin-top:10px; }
-button{
-  margin:4px;
-  padding:8px 12px;
+button,input{
+  font-size:16px;
+  margin:5px;
 }
-.used{ opacity:0.3; }
-.selected{ background:orange; }
 </style>
 </head>
 <body>
 
-<div id="topBar">
-  手数: <span id="moves">0</span>
-</div>
-
+<h2>逆重力マッチ3テスト</h2>
+手数: <span id="moves">0</span><br>
+<input type="number" id="moveInput" value="20">
+<button id="startBtn">スタート</button>
+<br>
 <canvas id="board" width="400" height="400"></canvas>
-
-<div id="ui">
-  <div>
-    <button id="itemA">A</button>
-    <button id="itemB">B</button>
-    <button id="itemC">C</button>
-    <button id="itemD">D</button>
-  </div>
-  <div>
-    手数設定:
-    <input type="number" id="moveInput" value="20" min="1">
-    <button id="startBtn">START</button>
-  </div>
-</div>
 
 <script src="game.js"></script>
 </body>
