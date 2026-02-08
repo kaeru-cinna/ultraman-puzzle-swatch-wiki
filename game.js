@@ -1,5 +1,8 @@
 const SIZE = 8;
 const COLORS = ["red","blue","green","yellow","purple"];
+const CLEAR_DELAY = 1000;
+const DROP_DELAY = 300;
+
 const canvas = document.getElementById("board");
 const ctx = canvas.getContext("2d");
 const CELL = canvas.width / SIZE;
@@ -7,7 +10,6 @@ const CELL = canvas.width / SIZE;
 let board = [];
 let moves = 0;
 let gameState = "editor";
-
 let selectedCell = null;
 let selectedItem = null;
 let itemUsed = {A:false,B:false,C:false,D:false};
@@ -18,6 +20,7 @@ class Cell {
     this.type=type;
     this.color=color;
     this.hp=hp;
+    this.highlight=false;
   }
 }
 
@@ -40,41 +43,16 @@ function draw(){
   for(let r=0;r<SIZE;r++){
     for(let c=0;c<SIZE;c++){
       let cell=board[r][c];
+      if(!cell) continue;
+
       let x=c*CELL+CELL/2;
       let y=r*CELL+CELL/2;
 
       if(cell.type==="normal"){
-        ctx.fillStyle=cell.color;
+        ctx.fillStyle=cell.highlight ? "white" : cell.color;
         ctx.beginPath();
         ctx.arc(x,y,CELL/2-6,0,Math.PI*2);
         ctx.fill();
-      }
-      else if(cell.type==="lineH"||cell.type==="lineV"||
-              cell.type==="bomb"||cell.type==="colorBomb"||
-              cell.type==="randomBomb"){
-        ctx.fillStyle="white";
-        ctx.beginPath();
-        ctx.moveTo(x,y-CELL/2+8);
-        for(let i=1;i<5;i++){
-          ctx.lineTo(
-            x+(CELL/2-8)*Math.cos(i*2*Math.PI/5 - Math.PI/2),
-            y+(CELL/2-8)*Math.sin(i*2*Math.PI/5 - Math.PI/2)
-          );
-        }
-        ctx.fill();
-      }
-      else if(cell.type.startsWith("obstacle")){
-        ctx.fillStyle="gray";
-        ctx.beginPath();
-        ctx.moveTo(x,y-CELL/2+6);
-        ctx.lineTo(x-CELL/2+6,y+CELL/2-6);
-        ctx.lineTo(x+CELL/2-6,y+CELL/2-6);
-        ctx.fill();
-      }
-
-      if(cell.hp){
-        ctx.fillStyle="white";
-        ctx.fillText(cell.hp,x-4,y+4);
       }
     }
   }
@@ -99,17 +77,17 @@ function swap(r1,c1,r2,c2){
 
 function checkMatches(){
   let matches=[];
-  let visited=Array(SIZE).fill().map(()=>Array(SIZE).fill(false));
 
   for(let r=0;r<SIZE;r++){
     for(let c=0;c<SIZE;c++){
       let cell=board[r][c];
-      if(cell.type!=="normal")continue;
+      if(!cell || cell.type!=="normal")continue;
+
       let color=cell.color;
       let line=[[r,c]];
 
       for(let k=c+1;k<SIZE;k++){
-        if(board[r][k].type==="normal"&&board[r][k].color===color)
+        if(board[r][k] && board[r][k].type==="normal" && board[r][k].color===color)
           line.push([r,k]);
         else break;
       }
@@ -117,7 +95,7 @@ function checkMatches(){
 
       line=[[r,c]];
       for(let k=r+1;k<SIZE;k++){
-        if(board[k][c].type==="normal"&&board[k][c].color===color)
+        if(board[k][c] && board[k][c].type==="normal" && board[k][c].color===color)
           line.push([k,c]);
         else break;
       }
@@ -139,16 +117,38 @@ function clearMatches(matches){
     });
   });
 
+  // ハイライト
   clearSet.forEach(key=>{
     let [r,c]=key.split(",").map(Number);
-    board[r][c]=null;
+    if(board[r][c])
+      board[r][c].highlight=true;
   });
 
-  animateClear(()=>{
-    dropUp();
-    refill();
-    checkMatches();
-  });
+  draw();
+
+  setTimeout(()=>{
+
+    // 消去
+    clearSet.forEach(key=>{
+      let [r,c]=key.split(",").map(Number);
+      board[r][c]=null;
+    });
+
+    draw();
+
+    setTimeout(()=>{
+      dropUp();
+      draw();
+
+      setTimeout(()=>{
+        refill();
+        draw();
+        checkMatches();
+      }, DROP_DELAY);
+
+    }, DROP_DELAY);
+
+  }, CLEAR_DELAY);
 }
 
 function dropUp(){
@@ -177,13 +177,6 @@ function refill(){
   }
 }
 
-function animateClear(callback){
-  setTimeout(()=>{
-    callback();
-    draw();
-  },200);
-}
-
 canvas.addEventListener("click",e=>{
   if(gameState!=="playing")return;
   if(moves<=0)return;
@@ -191,11 +184,6 @@ canvas.addEventListener("click",e=>{
   let rect=canvas.getBoundingClientRect();
   let c=Math.floor((e.clientX-rect.left)/CELL);
   let r=Math.floor((e.clientY-rect.top)/CELL);
-
-  if(selectedItem){
-    useItem(r,c);
-    return;
-  }
 
   if(!selectedCell){
     selectedCell=[r,c];
@@ -212,54 +200,11 @@ canvas.addEventListener("click",e=>{
   draw();
 });
 
-function useItem(r,c){
-  if(itemUsed[selectedItem])return;
-
-  if(selectedItem==="A"){
-    triggerCell(r,c);
-  }
-  if(selectedItem==="B"){
-    for(let col=0;col<SIZE;col++)triggerCell(r,col);
-  }
-  if(selectedItem==="C"){
-    for(let row=0;row<SIZE;row++)triggerCell(row,c);
-  }
-  if(selectedItem==="D"){
-    if(!swapBuffer){
-      swapBuffer=[r,c];
-      return;
-    }else{
-      let [r1,c1]=swapBuffer;
-      swap(r1,c1,r,c);
-      swapBuffer=null;
-    }
-  }
-
-  itemUsed[selectedItem]=true;
-  document.getElementById("item"+selectedItem).classList.add("used");
-  selectedItem=null;
-  checkMatches();
-  draw();
-}
-
-function triggerCell(r,c){
-  let cell=board[r][c];
-  if(!cell)return;
-  board[r][c]=null;
-}
-
 document.getElementById("startBtn").onclick=()=>{
   initBoard();
   startGame();
   draw();
 };
-
-["A","B","C","D"].forEach(k=>{
-  document.getElementById("item"+k).onclick=()=>{
-    if(moves<=0)return;
-    selectedItem=k;
-  };
-});
 
 initBoard();
 draw();
