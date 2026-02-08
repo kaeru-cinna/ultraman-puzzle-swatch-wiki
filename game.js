@@ -9,9 +9,12 @@ const CELL = canvas.width / SIZE;
 
 let board = [];
 let moves = 0;
-let gameState = "editor";
+let gameState = "editor"; // editor / playing
 let selectedCell = null;
 
+/* =========================
+   セルクラス
+========================= */
 class Cell {
   constructor(type="normal",color=null,hp=null){
     this.type=type;
@@ -25,54 +28,74 @@ function randomColor(){
   return COLORS[Math.floor(Math.random()*COLORS.length)];
 }
 
+/* =========================
+   初期化
+========================= */
 function initBoard(){
   board=[];
   for(let r=0;r<SIZE;r++){
     board[r]=[];
     for(let c=0;c<SIZE;c++){
-      board[r][c]=new Cell("normal",randomColor());
+      board[r][c]=null; // ← 編集できるよう空にする
     }
   }
 }
 
+/* =========================
+   描画
+========================= */
 function draw(){
   ctx.clearRect(0,0,canvas.width,canvas.height);
 
   for(let r=0;r<SIZE;r++){
     for(let c=0;c<SIZE;c++){
+      let x=c*CELL;
+      let y=r*CELL;
+
+      ctx.strokeStyle="#444";
+      ctx.strokeRect(x,y,CELL,CELL);
+
       let cell=board[r][c];
       if(!cell) continue;
 
-      let x=c*CELL+CELL/2;
-      let y=r*CELL+CELL/2;
+      let cx=x+CELL/2;
+      let cy=y+CELL/2;
 
-      if(cell.type==="normal"){
-        ctx.fillStyle=cell.highlight ? "white" : cell.color;
-        ctx.beginPath();
-        ctx.arc(x,y,CELL/2-6,0,Math.PI*2);
-        ctx.fill();
-      }
+      ctx.fillStyle=cell.highlight ? "white" : cell.color;
+      ctx.beginPath();
+      ctx.arc(cx,cy,CELL/2-6,0,Math.PI*2);
+      ctx.fill();
     }
   }
 }
 
+/* =========================
+   ゲーム開始
+========================= */
 function startGame(){
+  // 未設定マスはランダムで埋める
+  for(let r=0;r<SIZE;r++){
+    for(let c=0;c<SIZE;c++){
+      if(!board[r][c]){
+        board[r][c]=new Cell("normal",randomColor());
+      }
+    }
+  }
+
   moves=parseInt(document.getElementById("moveInput").value);
   document.getElementById("moves").textContent=moves;
   gameState="playing";
+
   checkMatches();
 }
 
-function swap(r1,c1,r2,c2){
-  let tmp=board[r1][c1];
-  board[r1][c1]=board[r2][c2];
-  board[r2][c2]=tmp;
-}
-
+/* =========================
+   マッチ検出
+========================= */
 function checkMatches(){
-  let clearSet = new Set();
+  let clearSet=new Set();
 
-  // 横チェック
+  // 横
   for(let r=0;r<SIZE;r++){
     let count=1;
     for(let c=1;c<=SIZE;c++){
@@ -80,12 +103,10 @@ function checkMatches(){
         c<SIZE &&
         board[r][c] &&
         board[r][c-1] &&
-        board[r][c].type==="normal" &&
-        board[r][c-1].type==="normal" &&
         board[r][c].color===board[r][c-1].color
       ){
         count++;
-      } else {
+      }else{
         if(count>=3){
           for(let k=0;k<count;k++){
             clearSet.add(r+","+(c-1-k));
@@ -96,7 +117,7 @@ function checkMatches(){
     }
   }
 
-  // 縦チェック
+  // 縦
   for(let c=0;c<SIZE;c++){
     let count=1;
     for(let r=1;r<=SIZE;r++){
@@ -104,12 +125,10 @@ function checkMatches(){
         r<SIZE &&
         board[r][c] &&
         board[r-1][c] &&
-        board[r][c].type==="normal" &&
-        board[r-1][c].type==="normal" &&
         board[r][c].color===board[r-1][c].color
       ){
         count++;
-      } else {
+      }else{
         if(count>=3){
           for(let k=0;k<count;k++){
             clearSet.add((r-1-k)+","+c);
@@ -121,25 +140,20 @@ function checkMatches(){
   }
 
   if(clearSet.size>0){
-    clearMatchesFromSet(clearSet);
+    clearMatches(clearSet);
   }
 }
 
-function clearMatchesFromSet(clearSet){
+function clearMatches(clearSet){
 
-  // ハイライト
   clearSet.forEach(key=>{
     let [r,c]=key.split(",").map(Number);
-    if(board[r][c]){
-      board[r][c].highlight=true;
-    }
+    board[r][c].highlight=true;
   });
 
   draw();
 
   setTimeout(()=>{
-
-    // 実際に消す
     clearSet.forEach(key=>{
       let [r,c]=key.split(",").map(Number);
       board[r][c]=null;
@@ -152,49 +166,74 @@ function clearMatchesFromSet(clearSet){
       draw();
 
       setTimeout(()=>{
-        refill();
+        refillTop();
         draw();
         checkMatches();
-      }, DROP_DELAY);
+      },DROP_DELAY);
 
-    }, DROP_DELAY);
+    },DROP_DELAY);
 
-  }, CLEAR_DELAY);
+  },CLEAR_DELAY);
 }
 
+/* =========================
+   逆重力（上に落ちる）
+========================= */
 function dropUp(){
   for(let c=0;c<SIZE;c++){
-    for(let r=SIZE-1;r>=0;r--){
-      if(board[r][c]===null){
-        for(let k=r-1;k>=0;k--){
-          if(board[k][c]){
-            board[r][c]=board[k][c];
-            board[k][c]=null;
-            break;
-          }
-        }
+    let stack=[];
+    for(let r=0;r<SIZE;r++){
+      if(board[r][c]){
+        stack.push(board[r][c]);
       }
+    }
+
+    for(let r=0;r<SIZE;r++){
+      board[r][c]=stack[r] || null;
     }
   }
 }
 
-function refill(){
-  for(let r=0;r<SIZE;r++){
+/* =========================
+   下から補充（逆重力なので下側に湧く）
+========================= */
+function refillTop(){
+  for(let r=SIZE-1;r>=0;r--){
     for(let c=0;c<SIZE;c++){
-      if(board[r][c]===null){
+      if(!board[r][c]){
         board[r][c]=new Cell("normal",randomColor());
       }
     }
   }
 }
 
+/* =========================
+   クリック処理
+========================= */
 canvas.addEventListener("click",e=>{
-  if(gameState!=="playing")return;
-  if(moves<=0)return;
-
   let rect=canvas.getBoundingClientRect();
   let c=Math.floor((e.clientX-rect.left)/CELL);
   let r=Math.floor((e.clientY-rect.top)/CELL);
+
+  if(gameState==="editor"){
+    // 色を順番に切り替える
+    if(!board[r][c]){
+      board[r][c]=new Cell("normal",COLORS[0]);
+    }else{
+      let idx=COLORS.indexOf(board[r][c].color);
+      idx++;
+      if(idx>=COLORS.length){
+        board[r][c]=null;
+      }else{
+        board[r][c].color=COLORS[idx];
+      }
+    }
+    draw();
+    return;
+  }
+
+  if(gameState!=="playing") return;
+  if(moves<=0) return;
 
   if(!selectedCell){
     selectedCell=[r,c];
@@ -202,9 +241,13 @@ canvas.addEventListener("click",e=>{
     let [r1,c1]=selectedCell;
 
     if(Math.abs(r1-r)+Math.abs(c1-c)===1){
-      swap(r1,c1,r,c);
+      let tmp=board[r1][c1];
+      board[r1][c1]=board[r][c];
+      board[r][c]=tmp;
+
       moves--;
       document.getElementById("moves").textContent=moves;
+
       checkMatches();
     }
 
@@ -214,10 +257,11 @@ canvas.addEventListener("click",e=>{
   draw();
 });
 
+/* =========================
+   ボタン
+========================= */
 document.getElementById("startBtn").onclick=()=>{
-  initBoard();
   startGame();
-  draw();
 };
 
 initBoard();
