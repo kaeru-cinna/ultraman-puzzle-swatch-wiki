@@ -11,11 +11,11 @@ let board = [];
 let moves = 0;
 let gameState = "editor";
 let selectedCell = null;
-let lastSwapped = null;
+let lastSwap = null;
 
 class Cell {
   constructor(type="normal",color=null,bombType=null){
-    this.type=type; // normal bomb
+    this.type=type;
     this.color=color;
     this.bombType=bombType;
     this.highlight=false;
@@ -55,13 +55,15 @@ function draw(){
       }
 
       if(cell.type==="bomb"){
-        let color="orange";
-        if(cell.bombType==="random") color="gray";
-        if(cell.bombType==="explode") color="black";
         if(cell.bombType==="color"){
           drawRainbowTriangle(x,y,CELL/2-6);
           continue;
         }
+
+        let color="orange";
+        if(cell.bombType==="random") color="gray";
+        if(cell.bombType==="explode") color="black";
+
         ctx.fillStyle=color;
         drawTriangle(x,y,CELL/2-6);
       }
@@ -101,100 +103,78 @@ function swap(r1,c1,r2,c2){
   let tmp=board[r1][c1];
   board[r1][c1]=board[r2][c2];
   board[r2][c2]=tmp;
-  lastSwapped=[r2,c2];
+  lastSwap=[[r1,c1],[r2,c2]];
 }
 
-function checkMatches(){
+function checkMatches(test=false){
 
   let mark = Array.from({length:SIZE},()=>Array(SIZE).fill(false));
-  let bombInfo=null;
+  let found=false;
 
-  // 横チェック
   for(let r=0;r<SIZE;r++){
     let count=1;
     for(let c=1;c<=SIZE;c++){
-      if(c<SIZE &&
-         board[r][c] &&
-         board[r][c-1] &&
+      if(c<SIZE && board[r][c] && board[r][c-1] &&
          board[r][c].color===board[r][c-1].color){
         count++;
       }else{
         if(count>=3){
-          for(let k=0;k<count;k++){
+          found=true;
+          for(let k=0;k<count;k++)
             mark[r][c-1-k]=true;
-          }
-          if(count===4) bombInfo="line";
-          if(count>=5) bombInfo="color";
         }
         count=1;
       }
     }
   }
 
-  // 縦チェック
   for(let c=0;c<SIZE;c++){
     let count=1;
     for(let r=1;r<=SIZE;r++){
-      if(r<SIZE &&
-         board[r][c] &&
-         board[r-1][c] &&
+      if(r<SIZE && board[r][c] && board[r-1][c] &&
          board[r][c].color===board[r-1][c].color){
         count++;
       }else{
         if(count>=3){
-          for(let k=0;k<count;k++){
+          found=true;
+          for(let k=0;k<count;k++)
             mark[r-1-k][c]=true;
-          }
-          if(count===4) bombInfo="line";
-          if(count>=5) bombInfo="color";
         }
         count=1;
       }
     }
   }
 
-  // 2x2 ランダムボム
-  for(let r=0;r<SIZE-1;r++){
-    for(let c=0;c<SIZE-1;c++){
-      let a=board[r][c];
-      let b=board[r][c+1];
-      let d=board[r+1][c];
-      let e=board[r+1][c+1];
-      if(a&&b&&d&&e &&
-         a.color===b.color &&
-         a.color===d.color &&
-         a.color===e.color){
-        mark[r][c]=mark[r][c+1]=mark[r+1][c]=mark[r+1][c+1]=true;
-        bombInfo="random";
-      }
-    }
-  }
+  if(test) return found;
 
-  let clearSet=new Set();
-  for(let r=0;r<SIZE;r++){
-    for(let c=0;c<SIZE;c++){
-      if(mark[r][c]) clearSet.add(r+","+c);
-    }
-  }
+  if(found){
 
-  if(clearSet.size>0){
-    generateBomb(bombInfo);
+    let clearSet=new Set();
+    for(let r=0;r<SIZE;r++)
+      for(let c=0;c<SIZE;c++)
+        if(mark[r][c]) clearSet.add(r+","+c);
+
+    generateBomb(mark);
     clearMatches(clearSet);
   }
+
+  return found;
 }
 
-function generateBomb(type){
-  if(!type || !lastSwapped) return;
-  let [r,c]=lastSwapped;
+function generateBomb(mark){
 
-  if(type==="line")
-    board[r][c]=new Cell("bomb",null,"lineH");
+  if(!lastSwap) return;
 
-  if(type==="color")
-    board[r][c]=new Cell("bomb",null,"color");
+  let [[r1,c1],[r2,c2]] = lastSwap;
+  let pos=null;
 
-  if(type==="random")
-    board[r][c]=new Cell("bomb",null,"random");
+  if(mark[r1][c1]) pos=[r1,c1];
+  else if(mark[r2][c2]) pos=[r2,c2];
+
+  if(!pos) return;
+
+  let [r,c]=pos;
+  board[r][c]=new Cell("bomb",null,"lineH");
 }
 
 function clearMatches(clearSet){
@@ -210,7 +190,11 @@ function clearMatches(clearSet){
 
     clearSet.forEach(key=>{
       let [r,c]=key.split(",").map(Number);
-      if(lastSwapped && r===lastSwapped[0] && c===lastSwapped[1]) return;
+      if(lastSwap &&
+         ((r===lastSwap[0][0]&&c===lastSwap[0][1]) ||
+          (r===lastSwap[1][0]&&c===lastSwap[1][1])))
+        return;
+
       board[r][c]=null;
     });
 
@@ -268,12 +252,20 @@ canvas.addEventListener("click",e=>{
     selectedCell=[r,c];
   }else{
     let [r1,c1]=selectedCell;
+
     if(Math.abs(r1-r)+Math.abs(c1-c)===1){
+
       swap(r1,c1,r,c);
-      moves--;
-      document.getElementById("moves").textContent=moves;
-      checkMatches();
+
+      if(checkMatches(true)){
+        moves--;
+        document.getElementById("moves").textContent=moves;
+        checkMatches(false);
+      }else{
+        swap(r1,c1,r,c);
+      }
     }
+
     selectedCell=null;
   }
 
