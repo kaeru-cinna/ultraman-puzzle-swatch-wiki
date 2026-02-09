@@ -120,8 +120,10 @@ function startGame(){
   moves=parseInt(document.getElementById("moveInput").value);
   document.getElementById("moves").textContent=moves;
   gameState="playing";
-  checkMatches(false);
+  selectedCell=null;
+  lastSwap=null;
 }
+
 
 function swap(r1,c1,r2,c2){
   let tmp=board[r1][c1];
