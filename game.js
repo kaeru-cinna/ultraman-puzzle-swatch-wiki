@@ -1,3 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reverse Match3</title>
+<style>
+body{
+  margin:0;
+  background:#111;
+  color:white;
+  text-align:center;
+  font-family:sans-serif;
+}
+#board{
+  background:#222;
+  touch-action:none;
+  margin-top:10px;
+}
+button,input{
+  font-size:16px;
+  margin:5px;
+}
+</style>
+</head>
+<body>
+
+<h2>逆重力マッチ3</h2>
+手数: <span id="moves">0</span><br>
+<input type="number" id="moveInput" value="20">
+<button id="startBtn">スタート</button>
+<br>
+<canvas id="board" width="400" height="400"></canvas>
+
+<script>
 const SIZE = 8;
 const COLORS = ["red","blue","green","yellow","purple"];
 const CLEAR_DELAY = 1000;
@@ -55,48 +90,37 @@ function draw(){
       }
 
       if(cell.type==="bomb"){
-        if(cell.bombType==="color"){
-          drawRainbowTriangle(x,y,CELL/2-6);
-          continue;
-        }
-
         let color="orange";
         if(cell.bombType==="random") color="gray";
         if(cell.bombType==="explode") color="black";
-
-        ctx.fillStyle=color;
-        drawTriangle(x,y,CELL/2-6);
+        if(cell.bombType==="color"){
+          let g=ctx.createLinearGradient(x-10,y-10,x+10,y+10);
+          g.addColorStop(0,"red");
+          g.addColorStop(0.2,"orange");
+          g.addColorStop(0.4,"yellow");
+          g.addColorStop(0.6,"green");
+          g.addColorStop(0.8,"blue");
+          g.addColorStop(1,"purple");
+          ctx.fillStyle=g;
+        }else{
+          ctx.fillStyle=color;
+        }
+        ctx.beginPath();
+        ctx.moveTo(x,y-CELL/2+6);
+        ctx.lineTo(x-CELL/2+6,y+CELL/2-6);
+        ctx.lineTo(x+CELL/2-6,y+CELL/2-6);
+        ctx.closePath();
+        ctx.fill();
       }
     }
   }
-}
-
-function drawTriangle(cx,cy,r){
-  ctx.beginPath();
-  ctx.moveTo(cx,cy-r);
-  ctx.lineTo(cx-r,cy+r);
-  ctx.lineTo(cx+r,cy+r);
-  ctx.closePath();
-  ctx.fill();
-}
-
-function drawRainbowTriangle(cx,cy,r){
-  let g=ctx.createLinearGradient(cx-r,cy-r,cx+r,cy+r);
-  g.addColorStop(0,"red");
-  g.addColorStop(0.2,"orange");
-  g.addColorStop(0.4,"yellow");
-  g.addColorStop(0.6,"green");
-  g.addColorStop(0.8,"blue");
-  g.addColorStop(1,"purple");
-  ctx.fillStyle=g;
-  drawTriangle(cx,cy,r);
 }
 
 function startGame(){
   moves=parseInt(document.getElementById("moveInput").value);
   document.getElementById("moves").textContent=moves;
   gameState="playing";
-  checkMatches();
+  checkMatches(false);
 }
 
 function swap(r1,c1,r2,c2){
@@ -145,10 +169,13 @@ function checkMatches(test=false){
     }
   }
 
-  if(test) return found;
+  if(test){
+    if(!lastSwap) return false;
+    let [[r1,c1],[r2,c2]] = lastSwap;
+    return mark[r1][c1] || mark[r2][c2];
+  }
 
   if(found){
-
     let clearSet=new Set();
     for(let r=0;r<SIZE;r++)
       for(let c=0;c<SIZE;c++)
@@ -162,7 +189,6 @@ function checkMatches(test=false){
 }
 
 function generateBomb(mark){
-
   if(!lastSwap) return;
 
   let [[r1,c1],[r2,c2]] = lastSwap;
@@ -207,7 +233,7 @@ function clearMatches(clearSet){
       setTimeout(()=>{
         refillBottom();
         draw();
-        checkMatches();
+        checkMatches(false);
       },DROP_DELAY);
 
     },DROP_DELAY);
@@ -280,3 +306,7 @@ document.getElementById("startBtn").onclick=()=>{
 
 initBoard();
 draw();
+</script>
+
+</body>
+</html>

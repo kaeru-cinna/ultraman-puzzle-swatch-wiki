@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Match3 Reverse Gravity</title>
+<title>Reverse Match3</title>
 <style>
 body{
   margin:0;
@@ -25,13 +25,82 @@ button,input{
 </head>
 <body>
 
-<h2>シュミレーター</h2>
+<h2>逆重力マッチ3</h2>
 手数: <span id="moves">0</span><br>
 <input type="number" id="moveInput" value="20">
 <button id="startBtn">スタート</button>
 <br>
 <canvas id="board" width="400" height="400"></canvas>
 
-<script src="game.js"></script>
-</body>
-</html>
+<script>
+const SIZE = 8;
+const COLORS = ["red","blue","green","yellow","purple"];
+const CLEAR_DELAY = 1000;
+const DROP_DELAY = 300;
+
+const canvas = document.getElementById("board");
+const ctx = canvas.getContext("2d");
+const CELL = canvas.width / SIZE;
+
+let board = [];
+let moves = 0;
+let gameState = "editor";
+let selectedCell = null;
+let lastSwap = null;
+
+class Cell {
+  constructor(type="normal",color=null,bombType=null){
+    this.type=type;
+    this.color=color;
+    this.bombType=bombType;
+    this.highlight=false;
+  }
+}
+
+function randomColor(){
+  return COLORS[Math.floor(Math.random()*COLORS.length)];
+}
+
+function initBoard(){
+  board=[];
+  for(let r=0;r<SIZE;r++){
+    board[r]=[];
+    for(let c=0;c<SIZE;c++){
+      board[r][c]=new Cell("normal",randomColor());
+    }
+  }
+}
+
+function draw(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  for(let r=0;r<SIZE;r++){
+    for(let c=0;c<SIZE;c++){
+      let cell=board[r][c];
+      if(!cell) continue;
+
+      let x=c*CELL+CELL/2;
+      let y=r*CELL+CELL/2;
+
+      if(cell.type==="normal"){
+        ctx.fillStyle=cell.highlight?"white":cell.color;
+        ctx.beginPath();
+        ctx.arc(x,y,CELL/2-6,0,Math.PI*2);
+        ctx.fill();
+      }
+
+      if(cell.type==="bomb"){
+        let color="orange";
+        if(cell.bombType==="random") color="gray";
+        if(cell.bombType==="explode") color="black";
+        if(cell.bombType==="color"){
+          let g=ctx.createLinearGradient(x-10,y-10,x+10,y+10);
+          g.addColorStop(0,"red");
+          g.addColorStop(0.2,"orange");
+          g.addColorStop(0.4,"yellow");
+          g.addColorStop(0.6,"green");
+          g.addColorStop(0.8,"blue");
+          g.addColorStop(1,"purple");
+          ctx.fillStyle=g;
+        }else{
+          ctx.fillStyle=color;
