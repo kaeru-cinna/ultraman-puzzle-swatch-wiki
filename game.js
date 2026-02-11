@@ -1,183 +1,248 @@
-const SIZE = 8;
+// ===== 設定 =====
+const ROWS = 8;
+const COLS = 8;
+const CELL = 54;
 const COLORS = ["red","blue","green","yellow","purple"];
 
 let board = [];
 let selected = null;
 let moves = 20;
-let animating = false;
-let gameStarted = false;
 
-document.getElementById("startBtn").addEventListener("click", startGame);
+// ===== 初期化 =====
+document.getElementById("startBtn").addEventListener("click", initGame);
 
-function startGame() {
+function initGame() {
   moves = 20;
   document.getElementById("moves").textContent = moves;
-  gameStarted = true;
-  initBoard();
+  selected = null;
+  createBoard();
+  renderBoard();
 }
 
-function initBoard() {
+// ===== 盤面作成 =====
+function createBoard() {
   board = [];
-  for (let r = 0; r < SIZE; r++) {
+
+  for (let r = 0; r < ROWS; r++) {
     let row = [];
-    for (let c = 0; c < SIZE; c++) {
-      row.push(randomColor());
+    for (let c = 0; c < COLS; c++) {
+      row.push({
+        id: crypto.randomUUID(),
+        color: randomColor(),
+        bomb: null
+      });
     }
     board.push(row);
   }
-  render();
-  setTimeout(checkMatches, 100);
 }
 
-function randomColor() {
-  return COLORS[Math.floor(Math.random() * COLORS.length)];
-}
+// ===== 描画 =====
+function renderBoard() {
+  const boardEl = document.getElementById("board");
+  boardEl.innerHTML = "";
 
-function render() {
-  const boardDiv = document.getElementById("board");
-  boardDiv.innerHTML = "";
+  for (let r = 0; r < ROWS; r++) {
+    for (let c = 0; c < COLS; c++) {
 
-  for (let r = 0; r < SIZE; r++) {
-    for (let c = 0; c < SIZE; c++) {
+      const cell = board[r][c];
+      if (!cell) continue;
+
       const div = document.createElement("div");
-      div.className = "cell " + (board[r]?.[c] || "empty");
-      div.onclick = () => select(r, c);
-      boardDiv.appendChild(div);
+      div.className = "piece " + cell.color;
+
+      if (selected && selected.r === r && selected.c === c) {
+        div.style.outline = "3px solid white";
+      }
+
+      div.style.left = (c * CELL) + "px";
+      div.style.top = (r * CELL) + "px";
+
+      div.addEventListener("click", () => {
+        handleCellClick(r, c);
+      });
+
+      boardEl.appendChild(div);
     }
   }
 }
 
-function select(r, c) {
-  if (!gameStarted || animating || moves <= 0) return;
+// ===== 入力処理 =====
+function handleCellClick(r, c) {
 
   if (!selected) {
     selected = { r, c };
+    renderBoard();
     return;
   }
 
-  const dr = Math.abs(selected.r - r);
-  const dc = Math.abs(selected.c - c);
-
-  if (dr + dc === 1) {
-    swap(selected.r, selected.c, r, c, true);
+  if (selected.r === r && selected.c === c) {
+    selected = null;
+    renderBoard();
+    return;
   }
 
-  selected = null;
-}
+  if (isAdjacent(selected, { r, c })) {
 
-function swap(r1, c1, r2, c2, playerMove) {
-  [board[r1][c1], board[r2][c2]] = [board[r2][c2], board[r1][c1]];
-  render();
+    swapCells(selected, { r, c });
 
-  setTimeout(() => {
-    if (checkMatches()) {
-      if (playerMove) {
-        moves--;
-        document.getElementById("moves").textContent = moves;
-      }
+    let matches = detectMatches();
+
+    if (matches.length === 0) {
+      swapCells(selected, { r, c });
     } else {
-      if (playerMove) {
-        [board[r1][c1], board[r2][c2]] = [board[r2][c2], board[r1][c1]];
-        render();
+
+      // 連鎖処理
+      while (matches.length > 0) {
+
+        clearMatches(matches);
+        applyReverseGravity();
+        spawnNewPieces();
+
+        matches = detectMatches();
       }
+
     }
-  }, 200);
+
+    selected = null;
+    renderBoard();
+
+  } else {
+    selected = { r, c };
+    renderBoard();
+  }
 }
 
-function checkMatches() {
+
+// ===== スワップ =====
+function swapCells(a, b) {
+  const temp = board[a.r][a.c];
+  board[a.r][a.c] = board[b.r][b.c];
+  board[b.r][b.c] = temp;
+}
+
+// ===== 隣接判定 =====
+function isAdjacent(a, b) {
+  return Math.abs(a.r - b.r) + Math.abs(a.c - b.c) === 1;
+}
+
+// ===== マッチ検出 =====
+function detectMatches() {
+
   let matches = [];
 
-  // 横
-  for (let r = 0; r < SIZE; r++) {
+  // 横チェック
+  for (let r = 0; r < ROWS; r++) {
     let count = 1;
-    for (let c = 1; c <= SIZE; c++) {
-      if (c < SIZE && board[r][c] === board[r][c - 1]) {
+
+    for (let c = 1; c < COLS; c++) {
+      if (board[r][c].color === board[r][c - 1].color) {
         count++;
       } else {
         if (count >= 3) {
           for (let k = 0; k < count; k++) {
-            matches.push({ r: r, c: c - 1 - k });
+            matches.push({ r, c: c - 1 - k });
           }
         }
         count = 1;
       }
     }
+
+    if (count >= 3) {
+      for (let k = 0; k < count; k++) {
+        matches.push({ r, c: COLS - 1 - k });
+      }
+    }
   }
 
-  // 縦
-  for (let c = 0; c < SIZE; c++) {
+  // 縦チェック
+  for (let c = 0; c < COLS; c++) {
     let count = 1;
-    for (let r = 1; r <= SIZE; r++) {
-      if (r < SIZE && board[r][c] === board[r - 1][c]) {
+
+    for (let r = 1; r < ROWS; r++) {
+      if (board[r][c].color === board[r - 1][c].color) {
         count++;
       } else {
         if (count >= 3) {
           for (let k = 0; k < count; k++) {
-            matches.push({ r: r - 1 - k, c: c });
+            matches.push({ r: r - 1 - k, c });
           }
         }
         count = 1;
       }
     }
+
+    if (count >= 3) {
+      for (let k = 0; k < count; k++) {
+        matches.push({ r: ROWS - 1 - k, c });
+      }
+    }
   }
 
-  if (matches.length > 0) {
-    animating = true;
-    setTimeout(() => removeMatches(matches), 1000);
-    return true;
+  // 重複除去
+  const unique = [];
+  const map = new Set();
+
+  for (let m of matches) {
+    const key = m.r + "-" + m.c;
+    if (!map.has(key)) {
+      map.add(key);
+      unique.push(m);
+    }
   }
 
-  return false;
+  return unique;
 }
 
-function removeMatches(matches) {
+// ===== 消去 =====
+function clearMatches(matches) {
   matches.forEach(m => {
     board[m.r][m.c] = null;
   });
-
-  render();
-  setTimeout(applyReverseGravity, 1000);
 }
 
-/*
-  本物の吸い上げ重力
-  下に新ピースを生成し、
-  既存ピースを上へ押し上げる
-*/
+// ===== 補助 =====
+function randomColor() {
+  return COLORS[Math.floor(Math.random()*COLORS.length)];
+}
+// ===== 逆重力（吸い上げ） =====
 function applyReverseGravity() {
 
-  for (let c = 0; c < SIZE; c++) {
+  for (let c = 0; c < COLS; c++) {
 
-    let survivors = [];
+    let column = [];
 
-    // 上から下へ取得（順序保持）
-    for (let r = 0; r < SIZE; r++) {
-      if (board[r][c] != null) {
-        survivors.push(board[r][c]);
+    // nullじゃないものを集める
+    for (let r = 0; r < ROWS; r++) {
+      if (board[r][c] !== null) {
+        column.push(board[r][c]);
       }
     }
 
-    let missing = SIZE - survivors.length;
-
-    // 下から新規生成
-    let newPieces = [];
-    for (let i = 0; i < missing; i++) {
-      newPieces.push(randomColor());
+    // 上から詰める
+    for (let r = 0; r < column.length; r++) {
+      board[r][c] = column[r];
     }
 
-    // 下に新ピース、上に既存ピース
-    let finalColumn = survivors.concat(newPieces);
-
-    // 反映
-    for (let r = 0; r < SIZE; r++) {
-      board[r][c] = finalColumn[r];
+    // 残りはnull
+    for (let r = column.length; r < ROWS; r++) {
+      board[r][c] = null;
     }
   }
+}
 
-  render();
+function spawnNewPieces() {
 
-  setTimeout(() => {
-    animating = false;
-    checkMatches();
-  }, 1000);
+  for (let r = 0; r < ROWS; r++) {
+    for (let c = 0; c < COLS; c++) {
+
+      if (board[r][c] === null) {
+        board[r][c] = {
+          id: crypto.randomUUID(),
+          color: randomColor(),
+          bomb: null
+        };
+      }
+
+    }
+  }
 }
