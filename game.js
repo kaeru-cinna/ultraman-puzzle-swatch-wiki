@@ -94,19 +94,19 @@ async function handleCellClick(r, c) {
 
         // 消える前に描画
         renderBoard();
-        await flashMatches(matches); 
+        await sleep(2000);
 
         clearMatches(matches);
         renderBoard();
-        await sleep(1000);
+        await sleep(2000);
 
         applyReverseGravity();
         renderBoard();
-        await sleep(1000);
+        await sleep(2000);
 
         spawnNewPieces();
         renderBoard();
-        await sleep(1000);
+        await sleep(2000);
 
         matches = detectMatches();
       }
@@ -255,22 +255,3 @@ function spawnNewPieces() {
     }
   }
 }
-
-async function flashMatches(matches) {
-  for (const { r, c } of matches) {
-    const cell = document.querySelector(`[data-r='${r}'][data-c='${c}']`);
-    if (cell) {
-      cell.classList.add("flash");
-    }
-  }
-
-  await sleep(400);
-
-  for (const { r, c } of matches) {
-    const cell = document.querySelector(`[data-r='${r}'][data-c='${c}']`);
-    if (cell) {
-      cell.classList.remove("flash");
-    }
-  }
-}
-
