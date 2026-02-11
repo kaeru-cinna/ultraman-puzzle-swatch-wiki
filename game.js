@@ -18,6 +18,11 @@ function initGame() {
   createBoard();
   renderBoard();
 }
+// ===== 遅延 =====
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 
 // ===== 盤面作成 =====
 function createBoard() {
@@ -67,7 +72,7 @@ function renderBoard() {
 }
 
 // ===== 入力処理 =====
-function handleCellClick(r, c) {
+async function handleCellClick(r, c) {
 
   if (!selected) {
     selected = { r, c };
@@ -81,26 +86,30 @@ function handleCellClick(r, c) {
     return;
   }
 
-  if (isAdjacent(selected, { r, c })) {
-
-    swapCells(selected, { r, c });
-
-    let matches = detectMatches();
-
     if (matches.length === 0) {
       swapCells(selected, { r, c });
     } else {
 
-      // 連鎖処理
       while (matches.length > 0) {
 
+        // 消える前に描画
+        renderBoard();
+        await sleep(500);
+
         clearMatches(matches);
+        renderBoard();
+        await sleep(500);
+
         applyReverseGravity();
+        renderBoard();
+        await sleep(500);
+
         spawnNewPieces();
+        renderBoard();
+        await sleep(500);
 
         matches = detectMatches();
       }
-
     }
 
     selected = null;
