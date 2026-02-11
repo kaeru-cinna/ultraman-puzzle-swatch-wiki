@@ -5,8 +5,16 @@ const COLORS = ["red","blue","green","yellow","purple"];
 let board = [];
 let selected = null;
 let isProcessing = false;
+let gameStarted = false;
+let moves = 20;
 
 const boardElement = document.getElementById("board");
+const startBtn = document.getElementById("startBtn");
+const movesDisplay = document.getElementById("moves");
+
+function updateMoves(){
+  movesDisplay.textContent = "Moves: " + moves;
+}
 
 function randomColor(){
   return COLORS[Math.floor(Math.random()*COLORS.length)];
@@ -31,6 +39,7 @@ function initBoard(){
 
 function renderBoard(){
   boardElement.innerHTML="";
+  if(!gameStarted) return;
 
   for(let r=0;r<ROWS;r++){
     for(let c=0;c<COLS;c++){
@@ -66,7 +75,6 @@ function swap(a,b){
 function detectMatches(){
   let matches=[];
 
-  // 横
   for(let r=0;r<ROWS;r++){
     for(let c=0;c<COLS-2;c++){
       let a=board[r][c];
@@ -81,7 +89,6 @@ function detectMatches(){
     }
   }
 
-  // 縦
   for(let c=0;c<COLS;c++){
     for(let r=0;r<ROWS-2;r++){
       let a=board[r][c];
@@ -170,6 +177,7 @@ async function flashMatches(matches){
 
 async function handleClick(r,c){
 
+  if(!gameStarted || moves <= 0) return;
   if(isProcessing) return;
 
   if(!selected){
@@ -200,6 +208,9 @@ async function handleClick(r,c){
     swap(selected,{r,c});
     renderBoard();
   }else{
+    moves--;
+    updateMoves();
+
     while(matches.length>0){
 
       await flashMatches(matches);
@@ -224,5 +235,12 @@ async function handleClick(r,c){
   isProcessing=false;
 }
 
-initBoard();
-renderBoard();
+startBtn.onclick=()=>{
+  gameStarted=true;
+  moves=20;
+  updateMoves();
+  initBoard();
+  renderBoard();
+};
+
+updateMoves();
