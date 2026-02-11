@@ -87,7 +87,7 @@ function swap(r1, c1, r2, c2, playerMove) {
 function checkMatches() {
   let matches = [];
 
-  // horizontal
+  // 横
   for (let r = 0; r < SIZE; r++) {
     let count = 1;
     for (let c = 1; c <= SIZE; c++) {
@@ -104,7 +104,7 @@ function checkMatches() {
     }
   }
 
-  // vertical
+  // 縦
   for (let c = 0; c < SIZE; c++) {
     let count = 1;
     for (let r = 1; r <= SIZE; r++) {
@@ -136,37 +136,41 @@ function removeMatches(matches) {
   });
 
   render();
-  setTimeout(applyGravity, 1000);
+  setTimeout(applyReverseGravity, 1000);
 }
 
 /*
-   吸い上げ重力
-   ↓
-   下から新規生成
-   ↓
-   上へ詰める
+  本物の吸い上げ重力
+  下に新ピースを生成し、
+  既存ピースを上へ押し上げる
 */
-function applyGravity() {
+function applyReverseGravity() {
 
   for (let c = 0; c < SIZE; c++) {
 
-    let newColumn = [];
+    let survivors = [];
 
-    // 既存ピースを下から順に取得
-    for (let r = SIZE - 1; r >= 0; r--) {
+    // 上から下へ取得（順序保持）
+    for (let r = 0; r < SIZE; r++) {
       if (board[r][c] != null) {
-        newColumn.push(board[r][c]);
+        survivors.push(board[r][c]);
       }
     }
 
-    // 足りない分を下側に追加（吸い上げなので下から湧く）
-    while (newColumn.length < SIZE) {
-      newColumn.push(randomColor());
+    let missing = SIZE - survivors.length;
+
+    // 下から新規生成
+    let newPieces = [];
+    for (let i = 0; i < missing; i++) {
+      newPieces.push(randomColor());
     }
 
-    // 下から詰めていく（上に向かって積む）
-    for (let r = SIZE - 1; r >= 0; r--) {
-      board[r][c] = newColumn[SIZE - 1 - r];
+    // 下に新ピース、上に既存ピース
+    let finalColumn = survivors.concat(newPieces);
+
+    // 反映
+    for (let r = 0; r < SIZE; r++) {
+      board[r][c] = finalColumn[r];
     }
   }
 
