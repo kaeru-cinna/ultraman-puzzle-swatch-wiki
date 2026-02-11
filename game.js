@@ -87,6 +87,7 @@ function swap(r1, c1, r2, c2, playerMove) {
 function checkMatches() {
   let matches = [];
 
+  // horizontal
   for (let r = 0; r < SIZE; r++) {
     let count = 1;
     for (let c = 1; c <= SIZE; c++) {
@@ -103,6 +104,7 @@ function checkMatches() {
     }
   }
 
+  // vertical
   for (let c = 0; c < SIZE; c++) {
     let count = 1;
     for (let r = 1; r <= SIZE; r++) {
@@ -137,24 +139,39 @@ function removeMatches(matches) {
   setTimeout(applyGravity, 1000);
 }
 
+/*
+   吸い上げ重力
+   ↓
+   下から新規生成
+   ↓
+   上へ詰める
+*/
 function applyGravity() {
+
   for (let c = 0; c < SIZE; c++) {
-    let col = [];
 
+    let newColumn = [];
+
+    // 既存ピースを下から順に取得
     for (let r = SIZE - 1; r >= 0; r--) {
-      if (board[r][c] != null) col.push(board[r][c]);
+      if (board[r][c] != null) {
+        newColumn.push(board[r][c]);
+      }
     }
 
-    while (col.length < SIZE) {
-      col.push(randomColor());
+    // 足りない分を下側に追加（吸い上げなので下から湧く）
+    while (newColumn.length < SIZE) {
+      newColumn.push(randomColor());
     }
 
-    for (let r = 0; r < SIZE; r++) {
-      board[r][c] = col[SIZE - 1 - r];
+    // 下から詰めていく（上に向かって積む）
+    for (let r = SIZE - 1; r >= 0; r--) {
+      board[r][c] = newColumn[SIZE - 1 - r];
     }
   }
 
   render();
+
   setTimeout(() => {
     animating = false;
     checkMatches();
