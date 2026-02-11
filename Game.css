@@ -1,27 +1,27 @@
 body {
+  margin: 0;
   background: black;
-  color: white;
-  text-align: center;
-  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 #board {
-  position: relative;
-  width: 432px;
-  height: 432px;
-  margin: 20px auto;
+  display: grid;
+  grid-template-columns: repeat(8, 60px);
+  grid-template-rows: repeat(8, 60px);
+  gap: 4px;
 }
 
-.piece {
-  position: absolute;
-  width: 50px;
-  height: 50px;
+.cell {
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-  transition: transform 0.5s ease;
+  cursor: pointer;
+  transition: transform 0.2s, filter 0.2s;
 }
 
-.red { background:red; }
-.blue { background:blue; }
-.green { background:green; }
-.yellow { background:gold; }
-.purple { background:purple; }
+.selected {
+  outline: 3px solid white;
+}
