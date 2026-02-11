@@ -1,0 +1,17 @@
+body {
+  background:black;
+  color:white;
+  text-align:center;
+  font-family:sans-serif;
+}
+
+canvas{
+  background:#111;
+  border:2px solid white;
+  margin-top:15px;
+}
+
+button{
+  margin:5px;
+  padding:6px 14px;
+}
