@@ -94,19 +94,19 @@ async function handleCellClick(r, c) {
 
         // 消える前に描画
         renderBoard();
-        await sleep(500);
+        await sleep(1000);
 
         clearMatches(matches);
         renderBoard();
-        await sleep(500);
+        await sleep(1000);
 
         applyReverseGravity();
         renderBoard();
-        await sleep(500);
+        await sleep(1000);
 
         spawnNewPieces();
         renderBoard();
-        await sleep(500);
+        await sleep(1000);
 
         matches = detectMatches();
       }
