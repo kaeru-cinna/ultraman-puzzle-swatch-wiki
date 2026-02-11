@@ -1,24 +1,24 @@
 body {
-  text-align: center;
-  font-family: sans-serif;
   background: black;
   color: white;
+  text-align: center;
+  font-family: sans-serif;
 }
 
 #board {
-  display: grid;
-  grid-template-columns: repeat(8, 50px);
-  grid-template-rows: repeat(8, 50px);
-  gap: 4px;
-  justify-content: center;
-  margin-top: 20px;
+  position: relative;
+  width: 432px;
+  height: 432px;
+  margin: 20px auto;
+  background: #111;
 }
 
-.cell {
+.piece {
+  position: absolute;
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  cursor: pointer;
+  transition: transform 0.5s ease;
 }
 
 .red { background: red; }
@@ -26,5 +26,3 @@ body {
 .green { background: green; }
 .yellow { background: gold; }
 .purple { background: purple; }
-
-.empty { background: transparent; }
