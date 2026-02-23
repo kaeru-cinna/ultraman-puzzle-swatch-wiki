@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>ウルトラマンパズルシュワッチ攻略まとめ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2529205461735673"
+     crossorigin="anonymous"></script>
+  <style>
+  body {
+    font-family: sans-serif;
+    text-align: center;
+    margin-top: 40px;
+  }
+  .row {
+    margin: 10px 0;
+  }
+  input[type="number"] {
+    width: 80px;
+    padding: 5px;
+    margin: 0 5px;
+  }
+  button {
+    margin-top: 20px;
+    padding: 10px 25px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  #result {
+    margin-top: 25px;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  </style>
+</head>
+<body>
+
+<!-- 共通ヘッダー -->
+<div id="header"></div>
+
+<p class="notice">
+※当サイトは非公式ファン攻略サイトです。
+</p>
+
+<div class="container">
+
+  <!-- 共通目次 -->
+  <div id="toc-area"></div>
+
+  <!-- メイン -->
+  <main>
+
+<h1>複合ダメージ計算機</h1>
+
+<form id="damageForm">
+
+  <div class="row">
+    <input type="checkbox" id="c1" checked>
+    通常攻撃
+    <input type="number" id="v1"> ×
+    <input type="number" step="0.1" id="m1">
+  </div>
+
+  <div class="row">
+    <input type="checkbox" id="c2" checked>
+    スキル1
+    <input type="number" id="v2"> ×
+    <input type="number" step="0.1" id="m2">
+  </div>
+
+  <div class="row">
+    <input type="checkbox" id="c3" checked>
+    スキル2
+    <input type="number" id="v3"> ×
+    <input type="number" step="0.1" id="m3">
+  </div>
+
+  <div class="row">
+    <input type="checkbox" id="c4" checked>
+    追加ダメージ
+    <input type="number" id="v4"> ×
+    <input type="number" step="0.1" id="m4">
+  </div>
+
+  <div class="row">
+    <input type="checkbox" id="c5" checked>
+    属性補正
+    <input type="number" id="v5"> ×
+    <input type="number" step="0.1" id="m5">
+  </div>
+
+  <button type="submit">計算する</button>
+
+</form>
+
+<div id="result">合計ダメージ: 0</div>
+
+  </main>
+
+  <!-- サイドバー -->
+  <aside>
+    <div id="article-area"></div>
+  </aside>
+
+</div>
+
+<footer>
+  © ウルトラマンパズルシュワッチ攻略まとめ
+</footer>
+
+<script src="DamageCalulation.js"></script>
+<script src="include.js" defer></script>
+</body>
+</html>
