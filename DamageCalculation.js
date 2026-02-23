@@ -44,7 +44,7 @@ document.getElementById("scoreForm").addEventListener("submit", function(e) {
     finalScore *= (1 + v6 * coefficients.locket);
   }
 
-  if (maxHp > 0) {
+  if (maxHp > 0 && currentHp > 0) {
     let hpRate = currentHp / maxHp;
     hpRate = Math.max(0, Math.min(1, hpRate));
 
@@ -53,7 +53,7 @@ document.getElementById("scoreForm").addEventListener("submit", function(e) {
 
     finalScore *= (1 + hpBonus);
   }
-  finalScore += (military * coefficients.military_power);
+  finalScore += (1 + military * coefficients.military_power);
 
   document.getElementById("score-result").textContent =
     "最終スコア: " + Math.floor(finalScore);
