@@ -17,7 +17,7 @@ document.getElementById("scoreForm").addEventListener("submit", function(e) {
   };
 
   let finalScore = base;
-  let scoreText;
+  //let scoreText;
 
   const v1 = Number(document.getElementById("v1").value) || 0;
   const v2 = Number(document.getElementById("v2").value) || 0;
