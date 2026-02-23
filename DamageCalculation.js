@@ -4,12 +4,16 @@ document.getElementById("scoreForm").addEventListener("submit", function(e) {
   const base = Number(document.getElementById("baseScore").value) || 0;
   const maxHp = Number(document.getElementById("maxHp").value) || 0;
   const currentHp = Number(document.getElementById("currentHp").value) || 0;
+  const military = Number(document.getElementById("military").value) || 0;
 
   const coefficients = {
     boomerang: 0.01,
-    napalm: 0.03,
-    special_move: 0.01,
-    military_power: 0.50
+    napalm: 0.01,
+    locket: 0.01,
+    circle: 0.01,
+    peace: 0.0035,
+    special_move: 0.02,
+    military_power: 500
   };
 
   let finalScore = base;
@@ -18,10 +22,27 @@ document.getElementById("scoreForm").addEventListener("submit", function(e) {
   const v2 = Number(document.getElementById("v2").value) || 0;
   const v3 = Number(document.getElementById("v3").value) || 0;
   const v4 = Number(document.getElementById("v4").value) || 0;
+  const v5 = Number(document.getElementById("v5").value) || 0;
+  const v6 = Number(document.getElementById("v6").value) || 0;
 
-  finalScore *= (1 + v1 * coefficients.boomerang);
-  finalScore *= (1 + v2 * coefficients.napalm);
-  finalScore *= (1 + v3 * coefficients.special_move);
+  if (document.getElementById("bonus1Enable").checked) {
+    finalScore *= (1 + v1 * coefficients.boomerang);
+  }
+  if (document.getElementById("bonus2Enable").checked) {
+    finalScore *= (1 + v2 * coefficients.napalm);
+  }
+  if (document.getElementById("bonus3Enable").checked) {
+    finalScore *= (1 + v3 * coefficients.locket);
+  }
+  if (document.getElementById("bonus4Enable").checked) {
+    finalScore *= (1 + v4 * coefficients.locket);
+  }
+  if (document.getElementById("bonus5Enable").checked) {
+    finalScore *= (1 + v5 * coefficients.locket);
+  }
+  if (document.getElementById("bonus6Enable").checked) {
+    finalScore *= (1 + v6 * coefficients.locket);
+  }
 
   if (maxHp > 0) {
     let hpRate = currentHp / maxHp;
@@ -32,7 +53,7 @@ document.getElementById("scoreForm").addEventListener("submit", function(e) {
 
     finalScore *= (1 + hpBonus);
   }
-  finalScore += (1 + v4 * coefficients.military_power);
+  finalScore += (1 + military * coefficients.military_power);
 
   document.getElementById("score-result").textContent =
     "最終スコア: " + Math.floor(finalScore);
