@@ -8,31 +8,13 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2529205461735673"
      crossorigin="anonymous"></script>
   <style>
-  body {
-    font-family: sans-serif;
-    text-align: center;
-    margin-top: 40px;
-  }
-  .row {
-    margin: 10px 0;
-  }
-  input[type="number"] {
-    width: 80px;
-    padding: 5px;
-    margin: 0 5px;
-  }
-  button {
-    margin-top: 20px;
-    padding: 10px 25px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  #result {
-    margin-top: 25px;
-    font-size: 24px;
-    font-weight: bold;
-  }
-  </style>
+  body { font-family:sans-serif; text-align:center; margin-top:40px; }
+  .row { margin:10px 0; }
+  input { width:110px; padding:5px; margin:0 5px; }
+  button { margin-top:20px; padding:8px 20px; }
+  #result { margin-top:25px; font-size:22px; font-weight:bold; }
+</style>
+
 </head>
 <body>
 
@@ -51,50 +33,35 @@
   <!-- メイン -->
   <main>
 
-<h1>複合ダメージ計算機</h1>
+<h1>複合スコア計算機</h1>
 
-<form id="damageForm">
+<div class="row">
+  基本スコア
+  <input type="number" id="baseScore">
+</div>
 
-  <div class="row">
-    <input type="checkbox" id="c1" checked>
-    通常攻撃
-    <input type="number" id="v1"> ×
-    <input type="number" step="0.1" id="m1">
-  </div>
+<hr>
 
-  <div class="row">
-    <input type="checkbox" id="c2" checked>
-    スキル1
-    <input type="number" id="v2"> ×
-    <input type="number" step="0.1" id="m2">
-  </div>
+<div class="row">
+  最大HP <input type="number" id="maxHp">
+  現在HP <input type="number" id="currentHp">
+</div>
 
-  <div class="row">
-    <input type="checkbox" id="c3" checked>
-    スキル2
-    <input type="number" id="v3"> ×
-    <input type="number" step="0.1" id="m3">
-  </div>
+<hr>
 
-  <div class="row">
-    <input type="checkbox" id="c4" checked>
-    追加ダメージ
-    <input type="number" id="v4"> ×
-    <input type="number" step="0.1" id="m4">
-  </div>
+<form id="scoreForm">
 
-  <div class="row">
-    <input type="checkbox" id="c5" checked>
-    属性補正
-    <input type="number" id="v5"> ×
-    <input type="number" step="0.1" id="m5">
-  </div>
+  <div class="row">ボーナス1 <input type="number" id="v1"></div>
+  <div class="row">ボーナス2 <input type="number" id="v2"></div>
+  <div class="row">ボーナス3（HP依存・最大50%）</div>
+  <div class="row">ボーナス4 <input type="number" id="v4"></div>
+  <div class="row">ボーナス5 <input type="number" id="v5"></div>
 
   <button type="submit">計算する</button>
 
 </form>
 
-<div id="result">合計ダメージ: 0</div>
+<div id="result">最終スコア: 0</div>
 
   </main>
 
