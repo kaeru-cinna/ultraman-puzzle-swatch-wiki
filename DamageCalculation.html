@@ -7,14 +7,6 @@
   <link rel="stylesheet" href="style.css">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2529205461735673"
      crossorigin="anonymous"></script>
-  <style>
-  body { font-family:sans-serif; text-align:center; margin-top:40px; }
-  .row { margin:10px 0; }
-  input { width:110px; padding:5px; margin:0 5px; }
-  button { margin-top:20px; padding:8px 20px; }
-  #result { margin-top:25px; font-size:22px; font-weight:bold; }
-</style>
-
 </head>
 <body>
 
@@ -32,36 +24,39 @@
 
   <!-- メイン -->
   <main>
+    <div id="score-calculator">
 
-<h1>複合スコア計算機</h1>
+  <h1 id="score-title">複合スコア計算機</h1>
 
-<div class="row">
-  基本スコア
-  <input type="number" id="baseScore">
+  <div class="score-row">
+    基本スコア
+    <input type="number" id="baseScore">
+  </div>
+
+  <hr>
+
+  <div class="score-row">
+    最大HP <input type="number" id="maxHp">
+    現在HP <input type="number" id="currentHp">
+  </div>
+
+  <hr>
+
+  <form id="scoreForm">
+
+    <div class="score-row">ボーナス1 <input type="number" id="v1"></div>
+    <div class="score-row">ボーナス2 <input type="number" id="v2"></div>
+    <div class="score-row">HP（HP依存・最大50%）</div>
+    <div class="score-row">ボーナス4 <input type="number" id="v4"></div>
+    <div class="score-row">ボーナス5 <input type="number" id="v5"></div>
+
+    <button type="submit" id="score-button">計算する</button>
+
+  </form>
+
+  <div id="score-result">最終スコア: 0</div>
+
 </div>
-
-<hr>
-
-<div class="row">
-  最大HP <input type="number" id="maxHp">
-  現在HP <input type="number" id="currentHp">
-</div>
-
-<hr>
-
-<form id="scoreForm">
-
-  <div class="row">ボーナス1 <input type="number" id="v1"></div>
-  <div class="row">ボーナス2 <input type="number" id="v2"></div>
-  <div class="row">ボーナス3（HP依存・最大50%）</div>
-  <div class="row">ボーナス4 <input type="number" id="v4"></div>
-  <div class="row">ボーナス5 <input type="number" id="v5"></div>
-
-  <button type="submit">計算する</button>
-
-</form>
-
-<div id="result">最終スコア: 0</div>
 
   </main>
 
@@ -76,7 +71,7 @@
   © ウルトラマンパズルシュワッチ攻略まとめ
 </footer>
 
-<script src="DamageCalulation.js"></script>
+<script src="DamageCalculation.js" defer></script>
 <script src="include.js" defer></script>
 </body>
 </html>
