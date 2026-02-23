@@ -56,5 +56,5 @@ document.getElementById("scoreForm").addEventListener("submit", function(e) {
   finalScore += (1 + military * coefficients.military_power);
 
   document.getElementById("score-result").textContent =
-    "最終スコア: " + Math.floor(finalScore);
+    "最終スコア: " + finalScore.toLocaleString();
 });
