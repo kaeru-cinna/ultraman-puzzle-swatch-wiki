@@ -17,6 +17,7 @@ document.getElementById("scoreForm").addEventListener("submit", function(e) {
   };
 
   let finalScore = base;
+  let scoreText;
 
   const v1 = Number(document.getElementById("v1").value) || 0;
   const v2 = Number(document.getElementById("v2").value) || 0;
@@ -54,7 +55,13 @@ document.getElementById("scoreForm").addEventListener("submit", function(e) {
     finalScore *= (1 + hpBonus);
   }
   finalScore += (1 + military * coefficients.military_power);
+  
+  if (finalScore >= 100000000) {
+    scoreText = (finalScore / 1000000).toFixed(1) + "M";
+  } else {
+    scoreText = (finalScore / 1000).toFixed(1) + "K";
+  }
 
   document.getElementById("score-result").textContent =
-    "最終スコア: " + Math.floor(finalScore.toLocaleString());
+    "最終スコア: " + Math.floor(finalScore.toLocaleString() + "(" + scoreText + ")");
 });
