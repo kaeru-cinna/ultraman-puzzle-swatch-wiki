@@ -63,5 +63,5 @@ document.getElementById("scoreForm").addEventListener("submit", function(e) {
   }
 
   document.getElementById("score-result").textContent =
-    "最終スコア: " + Math.floor(finalScore.toLocaleString() + "(" + scoreText + ")");
+    "最終スコア: " + Math.floor(finalScore.toLocaleString()) + "(" + scoreText + ")";
 });
