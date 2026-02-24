@@ -36,13 +36,13 @@ document.getElementById("scoreForm").addEventListener("submit", function(e) {
     finalScore *= (1 + v3 * coefficients.locket);
   }
   if (document.getElementById("bonus4Enable").checked) {
-    finalScore *= (1 + v4 * coefficients.locket);
+    finalScore *= (1 + v4 * coefficients.circle);
   }
   if (document.getElementById("bonus5Enable").checked) {
-    finalScore *= (1 + v5 * coefficients.locket);
+    finalScore *= (1 + v5 * coefficients.peace);
   }
   if (document.getElementById("bonus6Enable").checked) {
-    finalScore *= (1 + v6 * coefficients.locket);
+    finalScore *= (1 + v6 * coefficients.special_move);
   }
 
   if (maxHp > 0 && currentHp > 0) {
