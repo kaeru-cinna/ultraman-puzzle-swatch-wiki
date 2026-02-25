@@ -34,23 +34,23 @@ const characters = {
   },
   JUGGLUS_JUGGLER: {
     name: "ジャグラス ジャグラー",
-    worksPerformed: "",
-    height: "m",
-    weight: "",
-    introduction: ""
+    worksPerformed: "ウルトラマンオーブ",
+    height: "1.95～49m",
+    weight: "100Kg～47,000t",
+    introduction: "ウルトラマンオーブことクレナイ ガイのライバル。\nかつては光の戦士を目指して彼と競い合っていたが、いつしか闇に囚われ、ガイを敵視するようになっていった。\n長きにわたりガイのいるところに現れ、執拗に付け狙った末、地球で決戦を挑んだ。\n戦闘時はその姿を「魔人態」へと変える。また、闇のエネルギーを得ることで巨大化も可能。 武器は「蛇心剣」と呼ばれる妖刀。この剣から、 闇の力の必殺斬撃「新月斬液」を放つ。"
   },
   ZETTON: {
     name: "ゼットン",
-    worksPerformed: "",
-    height: "m",
-    weight: "",
-    introduction: ""
+    worksPerformed: "ウルトラマン",
+    height: "60m",
+    weight: "30,000t",
+    introduction: "宇宙一の強さを誇るといわれる宇宙恐竜。\n武器は顔面からの火球、光波バリヤー、腕からの 波状光線。防御力、光線技、パワーなど全ての面 でウルトラマンを陵駕する実力を持つ。\nウルトラマンとの戦いでは、その攻撃を全く受け付けず、逆に圧倒的なパワーでカラータイマーを破壊し、ウルトラマンを倒した。"
   },
   ULTRAMAN_: {
     name: "",
     worksPerformed: "",
     height: "m",
-    weight: "",
+    weight: ",000t",
     introduction: ""
   }
 };

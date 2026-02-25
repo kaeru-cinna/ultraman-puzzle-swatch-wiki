@@ -310,3 +310,33 @@ footer {
     display: none;
   }
 }
+
+/* ===== ダメージ計算 ===== */
+#score-calculator {
+  font-family: sans-serif;
+  text-align: center;
+  margin-top: 40px;
+}
+
+#score-calculator .score-row {
+  margin: 12px 0;
+}
+
+#score-calculator input {
+  width: 110px;
+  padding: 6px;
+  margin: 0 5px;
+}
+
+#score-button {
+  margin-top: 20px;
+  padding: 8px 20px;
+  cursor: pointer;
+}
+
+#score-result {
+  margin-top: 25px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
