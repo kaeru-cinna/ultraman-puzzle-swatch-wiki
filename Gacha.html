@@ -31,18 +31,19 @@
       <select id="gachaLevel">
         <option value="Character">キャラ</option>
         <option value="Core">コア</option>
+        <option value="wish">願い</option>
         <option value="Reminiscence">追憶</option>
       </select>
     </label>
 
-    <button onclick="draw20()">20連ガチャ</button>
+    <button onclick="draw40()">40連ガチャ</button>
   </section>
 
   <section id="results" class="gacha-results"></section>
 
   <div class="retry-area">
     <button id="retryButton" onclick="retryGacha()" style="display:none;">
-      もう一度20連
+      もう一度40連
     </button>
   </div>
 
