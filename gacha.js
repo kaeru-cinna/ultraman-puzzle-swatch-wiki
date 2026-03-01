@@ -166,7 +166,7 @@ const gachaRates = {
     { name: "イベントコイン×10", rate: 0.500, rarity: 3, img: "Capsule.png" },
     { name: "トリガーパワー", rate: 0.100, rarity: 4, img: "Capsule.png" },
     { name: "トリガースカイ", rate: 0.100, rarity: 4, img: "Capsule.png" },
-    { name: "カルミラ", rate: 0.051, rarity: 5, img: "Capsule.png" }
+    { name: "カルミラ", rate: 0.05, rarity: 5, img: "Capsule.png" }
   ],
   Reminiscence: [
     { name: "サークルカプセル", rate: 4.265, rarity: 3, img: "Capsule.png" },
