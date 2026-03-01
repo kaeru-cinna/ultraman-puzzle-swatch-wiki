@@ -179,8 +179,8 @@ function drawOnce(table) {
   return table[0];
 }
 
-/* 20連（1枠ずつ） */
-function draw20() {
+/* 40連（1枠ずつ） */
+function draw40() {
   if (isDrawing) return;
 
   isDrawing = true;
@@ -192,7 +192,7 @@ function draw20() {
 
   results.innerHTML = "";
 
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < 40; i++) {
     setTimeout(() => {
       const item = drawOnce(table);
 
@@ -215,7 +215,7 @@ function draw20() {
 
       results.appendChild(div);
 
-      if (i === 19) {
+      if (i === 39) {
         isDrawing = false;
         document.getElementById("retryButton").style.display = "inline-block";
       }
@@ -224,5 +224,5 @@ function draw20() {
 }
 
 function retryGacha() {
-  draw20();
+  draw40();
 }
