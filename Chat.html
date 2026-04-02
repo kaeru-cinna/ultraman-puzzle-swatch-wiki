@@ -26,6 +26,12 @@
   <main>
    <main class="contact-page">
   <h2>雑談広場</h2>
+  <h3>隊員招待コード</h3>
+  1.ホーム画面右上の三をタップ
+  2.キャンペーンワードの入力
+  3.キャンペーンの選択「隊員招待キャンペーン」
+  4.キャンペーンワード「F2K7E4L」<button id="copyBtn" onclick="copyText()">コピー</button>
+  5.決定でダイヤプレゼント！
 
   <p class="notice">
     招待コードの交換や雑談などご自由に投稿してください。<br>
@@ -60,6 +66,19 @@
     s.setAttribute('data-timestamp', +new Date());
     (d.head || d.body).appendChild(s);
   })();
+  
+  function copyText() {
+  const text = "F2K7E4L";
+
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById("copyBtn");
+    btn.textContent = "コピー済み！";
+
+    setTimeout(() => {
+      btn.textContent = "コピー";
+    }, 2000);
+  });
+}
 </script>
 
 <noscript>
