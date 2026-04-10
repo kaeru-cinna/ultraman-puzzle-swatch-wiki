@@ -127,7 +127,7 @@ const gachaRates = {
     { name: "GサークルUR", rate: 0.004, rarity: 5, img: "gold4.png" },
     { name: "BブーメランUR", rate: 0.004, rarity: 5, img: "gold4.png" }
   ],
-  wish: [
+  Wish: [
     { name: "サークルカプセル", rate: 4.259, rarity: 3, img: "Capsule.png" },
     { name: "ロケットカプセル", rate: 4.259, rarity: 3, img: "Capsule.png" },
     { name: "ナパームカプセル", rate: 4.259, rarity: 3, img: "Capsule.png" },
@@ -208,7 +208,7 @@ const gachaRates = {
     { name: "ゲネガーグ", rate: 0.500, rarity: 3, img: "Capsule.png" },
     { name: "ウルトラマンZ", rate: 0.099, rarity: 4, img: "Capsule.png" }
   ],
-  hope: [
+  Hope: [
     { name: "サークルカプセル", rate: 4.267, rarity: 3, img: "Capsule.png" },
     { name: "ロケットカプセル", rate: 4.267, rarity: 3, img: "Capsule.png" },
     { name: "ナパームカプセル", rate: 4.267, rarity: 3, img: "Capsule.png" },
