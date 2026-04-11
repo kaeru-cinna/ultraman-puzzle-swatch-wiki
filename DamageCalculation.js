@@ -58,7 +58,7 @@ document.getElementById("scoreForm").addEventListener("submit", function(e) {
   
   finalScore = Math.floor(finalScore);
   
-  if (finalScore >= 10000000000) {
+  if (finalScore >= 100000000000) {
     scoreNotation = (finalScore / 1000000000).toFixed(1) + "B";
   }else if (finalScore >= 100000000) {
     scoreNotation = (finalScore / 1000000).toFixed(1) + "M";
