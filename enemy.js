@@ -2,7 +2,7 @@ const params = new URLSearchParams(location.search);
 const id = params.get("id");
 
 const enemies = {
-  gomora: {
+  ゴモラ: {
     name: "ゴモラ",
     locations: [
       {
@@ -12,15 +12,15 @@ const enemies = {
         partners: []
       },
       {
-        stage: "第2章 5-1",
+        stage: "410",
         wave: 1,
-        obstacles: [],
-        partners: ["redking"]
+        obstacles: ["ガラス"],
+        partners: []
       }
     ]
   },
 
-  pigmon: {
+  デマーガ: {
     name: "ピグモン",
     locations: [
       {
@@ -32,7 +32,7 @@ const enemies = {
     ]
   },
 
-  redking: {
+  タガヌラー: {
     name: "レッドキング",
     locations: [
       {
