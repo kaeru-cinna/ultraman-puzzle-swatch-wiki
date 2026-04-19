@@ -6,10 +6,10 @@ const enemies = {
     name: "ゴモラ",
     locations: [
       {
-        stage: "第1章 3-2",
+        stage: "2",
         wave: 2,
-        obstacles: ["岩", "トゲ"],
-        partners: ["pigmon", "redking"]
+        obstacles: ["木箱7個"],
+        partners: []
       },
       {
         stage: "第2章 5-1",
