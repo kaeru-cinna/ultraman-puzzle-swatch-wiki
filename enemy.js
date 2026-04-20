@@ -34,6 +34,18 @@ const enemies = {
         wave: 1,
         obstacles: ["巨大植物8個"],
         partners: ["ババルウ","デマーガ"]
+      },
+      {
+        stage: "13",
+        wave: 1,
+        obstacles: ["巨大植物12個"],
+        partners: ["ババルウ","デマーガ"]
+      },
+      {
+        stage: "14",
+        wave: 2,
+        obstacles: ["巨大植物14個"],
+        partners: ["タガヌラー","ババルウ","デマーガ"]
       }
     ]
   },
