@@ -21,13 +21,19 @@ const enemies = {
   },
 
   デマーガ: {
-    name: "ピグモン",
+    name: "デマーガ",
     locations: [
       {
-        stage: "第1章 3-2",
+        stage: "1",
         wave: 2,
-        obstacles: ["岩"],
-        partners: ["gomora"]
+        obstacles: [],
+        partners: []
+      },
+      {
+        stage: "11",
+        wave: 1,
+        obstacles: ["巨大植物8個"],
+        partners: ["デマーガ","ババルウ"]
       }
     ]
   },
