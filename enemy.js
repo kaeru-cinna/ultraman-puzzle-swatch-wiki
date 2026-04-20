@@ -2,7 +2,7 @@ const params = new URLSearchParams(location.search);
 const id = params.get("id");
 
 const enemies = {
-  ゴモラ: {
+  Gomora: {
     name: "ゴモラ",
     locations: [
       {
@@ -20,7 +20,7 @@ const enemies = {
     ]
   },
 
-  デマーガ: {
+  Demarga: {
     name: "デマーガ",
     locations: [
       {
@@ -33,13 +33,13 @@ const enemies = {
         stage: "11",
         wave: 1,
         obstacles: ["巨大植物8個"],
-        partners: ["tttt","ババルウ"]
+        partners: ["Demarga","Babalou"]
       }
     ]
   },
 
-  tttt: {
-    name: "レッドキング",
+  Babalou: {
+    name: "ババルウ",
     locations: [
       {
         stage: "第1章 3-2",
