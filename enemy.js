@@ -48,6 +48,24 @@ const enemies = {
         partners: ["gomora"]
       }
     ]
+  },
+
+  タガヌラー: {
+    name: "タガヌラー",
+    locations: [
+      {
+        stage: "1",
+        wave: 1,
+        obstacles: [],
+        partners: []
+      },
+      {
+        stage: "11",
+        wave: 1,
+        obstacles: ["巨大植物8個"],
+        partners: ["ババルウ","デマーガ"]
+      }
+    ]
   }
 };
 
