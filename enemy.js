@@ -72,21 +72,29 @@ if (enemies[id]) {
 
     const partnerCell = row.insertCell(3);
 
-    if (loc.partners && loc.partners.length) {
+   if (loc.partners && loc.partners.length) {
       loc.partners.forEach((partnerId, index) => {
-        if (partnerId !== id && enemies[partnerId]) {
 
+        // 自分自身はリンクなしで表示
+        if (partnerId === id) {
+          const span = document.createElement("span");
+          span.textContent = enemies[partnerId].name;
+          partnerCell.appendChild(span);
+
+        // 他の敵はリンク
+        } else if (enemies[partnerId]) {
           const link = document.createElement("a");
-          link.href = "Enemy.html?id=" + partnerId;
+          link.href = "enemy.html?id=" + partnerId;
           link.textContent = enemies[partnerId].name;
-
           partnerCell.appendChild(link);
+        }
 
-          if (index < loc.partners.length - 1) {
-            partnerCell.appendChild(document.createTextNode(" / "));
-          }
+        // 区切り
+        if (index < loc.partners.length - 1) {
+          partnerCell.appendChild(document.createTextNode(" / "));
         }
       });
+
     } else {
       partnerCell.textContent = "-";
     }
