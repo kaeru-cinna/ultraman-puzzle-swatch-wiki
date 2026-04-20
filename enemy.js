@@ -33,12 +33,12 @@ const enemies = {
         stage: "11",
         wave: 1,
         obstacles: ["巨大植物8個"],
-        partners: ["デマーガ","ババルウ"]
+        partners: ["tttt","ババルウ"]
       }
     ]
   },
 
-  タガヌラー: {
+  tttt: {
     name: "レッドキング",
     locations: [
       {
