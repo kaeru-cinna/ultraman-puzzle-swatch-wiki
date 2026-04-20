@@ -102,7 +102,7 @@ if (enemies[id]) {
         // 他の敵はリンク
         } else if (enemies[partnerId]) {
           const link = document.createElement("a");
-          link.href = "enemy.html?id=" + partnerId;
+          link.href = "Enemy.html?id=" + partnerId;
           link.textContent = enemies[partnerId].name;
           partnerCell.appendChild(link);
         }
