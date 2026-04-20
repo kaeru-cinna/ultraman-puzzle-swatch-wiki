@@ -33,7 +33,7 @@ const enemies = {
         stage: "11",
         wave: 1,
         obstacles: ["巨大植物8個"],
-        partners: ["Demarga","Babalou"]
+        partners: ["Demarga","Babalou","Babalou"]
       }
     ]
   },
