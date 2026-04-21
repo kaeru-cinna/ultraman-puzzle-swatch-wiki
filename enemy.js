@@ -139,13 +139,13 @@ const enemies = {
       },
       {
         stage: "211",
-        wave: 2,
+        wave: 1,
         obstacles: ["ツル4個","巨大植物4個"],
         partners: ["ババルウ","デマーガ"]
       },
       {
         stage: "213",
-        wave: 2,
+        wave: 1,
         obstacles: ["ツル6個","巨大植物6個"],
         partners: ["ババルウ","デマーガ"]
       },
@@ -189,7 +189,61 @@ const enemies = {
         stage: "311",
         wave: 1,
         obstacles: ["巨大植物8個"],
-        partners: ["","デマーガ"]
+        partners: ["ババルウ","デマーガ"]
+      },
+      {
+        stage: "313",
+        wave: 1,
+        obstacles: ["巨大植物12個"],
+        partners: ["ババルウ","デマーガ"]
+      },
+      {
+        stage: "332",
+        wave: 2,
+        obstacles: ["砂利10個"],
+        partners: ["ダダ","ダダ","デマーガ"]
+      },
+      {
+        stage: "334",
+        wave: 2,
+        obstacles: ["砂利14個"],
+        partners: ["ダダ","ダダ","デマーガ"]
+      },
+      {
+        stage: "335",
+        wave: 2,
+        obstacles: ["砂利16個"],
+        partners: ["ダダ","モンスアーガー","スラン星人","デマーガ"]
+      },
+      {
+        stage: "337",
+        wave: 2,
+        obstacles: ["砂利20個"],
+        partners: ["ダダ","モンスアーガー","デマーガ"]
+      },
+      {
+        stage: "338",
+        wave: 2,
+        obstacles: ["砂利22個"],
+        partners: ["ダダ","デマーガ"]
+      },
+      {
+        stage: "411",
+        wave: 1,
+        obstacles: ["ツル8個"],
+        partners: ["ババルウ","デマーガ"]
+      }
+      {
+        stage: "412",
+        wave: 2,
+        obstacles: ["ツル10個"],
+        partners: ["ババルウ","タガヌラー","デマーガ"]
+      },
+      {
+        stage: "413",
+        wave: 2,
+        obstacles: ["ツル10個"],
+        partners: ["ババルウ","デマーガ"]
       }
     ]
   },
@@ -198,10 +252,10 @@ const enemies = {
     name: "ババルウ",
     locations: [
       {
-        stage: "第1章 3-2",
+        stage: "555",
         wave: 2,
-        obstacles: ["トゲ"],
-        partners: ["gomora"]
+        obstacles: ["巨大植物"],
+        partners: ["デマーガ"]
       }
     ]
   },
