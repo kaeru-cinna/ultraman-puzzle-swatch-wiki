@@ -114,9 +114,81 @@ const enemies = {
         partners: ["モンスアーガー","ダダ","デマーガ"]
       },
       {
-        stage: "",
+        stage: "134",
         wave: 2,
-        obstacles: ["ツル個","巨大植物個"],
+        obstacles: ["石化7個","砂利7個"],
+        partners: ["ダダ","モンスアーガー","デマーガ"]
+      },
+      {
+        stage: "135",
+        wave: 2,
+        obstacles: ["石化8個","砂利8個"],
+        partners: ["ダダ","モンスアーガー","スラン星人","デマーガ"]
+      },
+      {
+        stage: "137",
+        wave: 2,
+        obstacles: ["石化10個","砂利10個"],
+        partners: ["ダダ","スラン星人","デマーガ"]
+      },
+      {
+        stage: "138",
+        wave: 2,
+        obstacles: ["石化11個","砂利11個"],
+        partners: ["ダダ","デマーガ"]
+      },
+      {
+        stage: "211",
+        wave: 2,
+        obstacles: ["ツル4個","巨大植物4個"],
+        partners: ["ババルウ","デマーガ"]
+      },
+      {
+        stage: "213",
+        wave: 2,
+        obstacles: ["ツル6個","巨大植物6個"],
+        partners: ["ババルウ","デマーガ"]
+      },
+      {
+        stage: "217",
+        wave: 2,
+        obstacles: ["ツル10個","巨大植物10個"],
+        partners: ["タガヌラー","ババルウ","デマーガ"]
+      },
+      {
+        stage: "232",
+        wave: 2,
+        obstacles: ["石化5個","砂利5個"],
+        partners: ["ダダ","デマーガ","デマーガ"]
+      },
+      {
+        stage: "234",
+        wave: 2,
+        obstacles: ["石化7個","砂利7個"],
+        partners: ["ダダ","デマーガ","デマーガ"]
+      },
+      {
+        stage: "235",
+        wave: 2,
+        obstacles: ["石化8個","砂利8個"],
+        partners: ["ダダ","モンスアーガー","スラン星人","デマーガ"]
+      },
+      {
+        stage: "237",
+        wave: 2,
+        obstacles: ["石化10個","砂利10個"],
+        partners: ["ダダ","モンスアーガー","デマーガ"]
+      },
+      {
+        stage: "238",
+        wave: 2,
+        obstacles: ["石化11個","砂利11個"],
+        partners: ["ダダ","ダダ","デマーガ"]
+      },
+      {
+        stage: "311",
+        wave: 1,
+        obstacles: ["巨大植物8個"],
         partners: ["","デマーガ"]
       }
     ]
