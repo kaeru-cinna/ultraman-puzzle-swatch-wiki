@@ -232,7 +232,7 @@ const enemies = {
         wave: 1,
         obstacles: ["ツル8個"],
         partners: ["ババルウ","デマーガ"]
-      }
+      },
       {
         stage: "412",
         wave: 2,
@@ -242,7 +242,7 @@ const enemies = {
       {
         stage: "413",
         wave: 2,
-        obstacles: ["ツル10個"],
+        obstacles: ["ツル12個"],
         partners: ["ババルウ","デマーガ"]
       }
     ]
