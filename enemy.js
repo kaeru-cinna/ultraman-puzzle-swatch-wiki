@@ -241,8 +241,44 @@ const enemies = {
       },
       {
         stage: "413",
-        wave: 2,
+        wave: 1,
         obstacles: ["ツル12個"],
+        partners: ["ババルウ","デマーガ"]
+      },
+      {
+        stage: "432",
+        wave: 2,
+        obstacles: ["石化10個"],
+        partners: ["ダダ","スラン星人","デマーガ"]
+      },
+      {
+        stage: "434",
+        wave: 2,
+        obstacles: ["石化14個"],
+        partners: ["ダダ","スラン星人","デマーガ"]
+      },
+      {
+        stage: "435",
+        wave: 2,
+        obstacles: ["石化16個"],
+        partners: ["ダダ","スラン星人","モンスアーガー","デマーガ"]
+      },
+      {
+        stage: "437",
+        wave: 2,
+        obstacles: ["石化20個"],
+        partners: ["ダダ","ダダ","デマーガ"]
+      },
+      {
+        stage: "438",
+        wave: 2,
+        obstacles: ["石化22個"],
+        partners: ["ダダ","モンスアーガー","デマーガ"]
+      },
+      {
+        stage: "511",
+        wave: 1,
+        obstacles: ["ツル4個","巨大植物4個"],
         partners: ["ババルウ","デマーガ"]
       }
     ]
