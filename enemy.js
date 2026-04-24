@@ -3,37 +3,127 @@ const id = params.get("id");
 
 const enemies = {
   エースキラー: {
-    name: "ゴモラ",
+    name: "エースキラー",
     locations: [
       {
         stage: "80",
         wave: 1,
         obstacles: ["ガラス20個"],
-        partners: []
+        partners: ["エースキラー"]
       },
       {
         stage: "280",
         wave: 1,
         obstacles: ["雪11個","氷13個"],
-        partners: []
+        partners: ["エースキラー"]
       },
       {
         stage: "480",
         wave: 1,
         obstacles: ["雪8個","氷塊18個"],
-        partners: []
+        partners: ["エースキラー"]
       },
       {
         stage: "680",
         wave: 1,
         obstacles: ["氷塊24個"],
-        partners: []
+        partners: ["エースキラー"]
+      }
+    ]
+  },
+  
+  エルドギメラ: {
+    name: "エルドギメラ",
+    locations: [
+      {
+        stage: "610",
+        wave: 1,
+        obstacles: ["木箱24個"],
+        partners: ["エルドギメラ"]
+      },
+      {
+        stage: "643",
+        wave: 1,
+        obstacles: ["砂12個"],
+        partners: ["メフィラス星人","エルドギメラ"]
+      },
+      {
+        stage: "645",
+        wave: 2,
+        obstacles: ["砂16個"],
+        partners: ["メフィラス星人","ベロクロン","ゼットン","エルドギメラ"]
+      },
+      {
+        stage: "647",
+        wave: 2,
+        obstacles: ["砂20個"],
+        partners: ["マグマ星人","ベロクロン","エルドギメラ"]
+      },
+      {
+        stage: "648",
+        wave: 2,
+        obstacles: ["砂22個"],
+        partners: ["メフィラス星人","ゾヴァラス","エルドギメラ"]
+      },
+      {
+        stage: "649",
+        wave: 2,
+        obstacles: ["砂24個"],
+        partners: ["メフィラス星人","ゼットン","エルドギメラ"]
+      },
+      {
+        stage: "691",
+        wave: 1,
+        obstacles: ["神殿4個","土サー4個"],
+        partners: ["ホロボロス","エルドギメラ"]
+      },
+      {
+        stage: "694",
+        wave: 2,
+        obstacles: ["神殿14個"],
+        partners: ["キリエロイド","ガゾート","エルドギメラ"]
+      },
+      {
+        stage: "696",
+        wave: 1,
+        obstacles: ["神殿18個"],
+        partners: ["キリエロイド","ガンQ","エルドギメラ"]
+      },
+      {
+        stage: "699",
+        wave: 1,
+        obstacles: ["神殿24個"],
+        partners: ["ゲバルガ","メフィラス星人","エルドギメラ"]
+      },
+      {
+        stage: "743",
+        wave: 1,
+        obstacles: ["神殿6個","砂6個"],
+        partners: ["ゼットン","エルドギメラ"]
+      },
+      {
+        stage: "745",
+        wave: 2,
+        obstacles: ["神殿8個","砂8個"],
+        partners: ["ゼットン","メフィラス星人","メトロン星人","エルドギメラ"]
+      },
+      {
+        stage: "747",
+        wave: 2,
+        obstacles: ["神殿10個","砂10個"],
+        partners: ["マグマ星人","メトロン星人","エルドギメラ"]
+      },
+      {
+        stage: "748",
+        wave: 2,
+        obstacles: ["神殿11個","砂11個"],
+        partners: ["ゾヴァラス","メフィラス星人","エルドギメラ"]
       }
     ]
   },
   
   NAME: {
-    name: "ゴモラ",
+    name: "NAME",
     locations: [
       {
         stage: "2",
