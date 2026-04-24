@@ -2,7 +2,37 @@ const params = new URLSearchParams(location.search);
 const id = params.get("id");
 
 const enemies = {
-  ゴモラ: {
+  エースキラー: {
+    name: "ゴモラ",
+    locations: [
+      {
+        stage: "80",
+        wave: 1,
+        obstacles: ["ガラス20個"],
+        partners: []
+      },
+      {
+        stage: "280",
+        wave: 1,
+        obstacles: ["雪11個","氷13個"],
+        partners: []
+      },
+      {
+        stage: "480",
+        wave: 1,
+        obstacles: ["雪8個","氷塊18個"],
+        partners: []
+      },
+      {
+        stage: "680",
+        wave: 1,
+        obstacles: ["氷塊24個"],
+        partners: []
+      }
+    ]
+  },
+  
+  NAME: {
     name: "ゴモラ",
     locations: [
       {
@@ -15,7 +45,7 @@ const enemies = {
         stage: "410",
         wave: 1,
         obstacles: ["ガラス"],
-        partners: []
+        partners: ["",""]
       }
     ]
   },
