@@ -122,19 +122,175 @@ const enemies = {
     ]
   },
   
+  エレキング: {
+    name: "エレキング",
+    locations: [
+      {
+        stage: "9",
+        wave: 2,
+        obstacles: ["木箱12個"],
+        partners: ["ベムスター","エレキング"]
+      },
+      {
+        stage: "21",
+        wave: 1,
+        obstacles: ["雪8個"],
+        partners: ["バルタン星人","エレキング"]
+      },
+      {
+        stage: "22",
+        wave: 2,
+        obstacles: ["雪10個"],
+        partners: ["バルタン星人","ベロクロン","エレキング"]
+      },
+      {
+        stage: "23",
+        wave: 1,
+        obstacles: ["雪12個"],
+        partners: ["バルタン星人","エレキング"]
+      },
+      {
+        stage: "24",
+        wave: 2,
+        obstacles: ["雪14個"],
+        partners: ["バルタン星人","ベロクロン","エレキング"]
+      },
+      {
+        stage: "25",
+        wave: 2,
+        obstacles: ["雪16個"],
+        partners: ["バルタン星人","ベロクロン","ガンQ","エレキング"]
+      },
+      {
+        stage: "26",
+        wave: 1,
+        obstacles: ["雪18個"],
+        partners: ["バルタン星人","ガンQ","エレキング"]
+      },
+      {
+        stage: "27",
+        wave: 2,
+        obstacles: ["雪20個"],
+        partners: ["バルタン星人","ベロクロン","エレキング"]
+      },
+      {
+        stage: "28",
+        wave: 2,
+        obstacles: ["雪22個"],
+        partners: ["バルタン星人","ベロクロン","エレキング"]
+      },
+      {
+        stage: "29",
+        wave: 1,
+        obstacles: ["雪24個"],
+        partners: ["バルタン星人","ガンQ","エレキング"]
+      },
+      {
+        stage: "71",
+        wave: 1,
+        obstacles: ["ガラス4個"],
+        partners: ["ババルウ","エレキング"]
+      },
+      {
+        stage: "73",
+        wave: 1,
+        obstacles: ["ガラス8個"],
+        partners: ["ババルウ","エレキング"]
+      },
+      {
+        stage: "74",
+        wave: 2,
+        obstacles: ["ガラス10個"],
+        partners: ["ババルウ","レイキュバス","エレキング"]
+      },
+      {
+        stage: "75",
+        wave: 2,
+        obstacles: ["ガラス12個"],
+        partners: ["ババルウ","レイキュバス","ゼットン","エレキング"]
+      },
+      {
+        stage: "77",
+        wave: 2,
+        obstacles: ["ガラス16個"],
+        partners: ["レイキュバス","ゼットン","エレキング"]
+      },
+      {
+        stage: "78",
+        wave: 2,
+        obstacles: ["ガラス18個"],
+        partners: ["ババルウ","レイキュバス","エレキング"]
+      },
+      {
+        stage: "121",
+        wave: 1,
+        obstacles: ["氷4個","雪4個"],
+        partners: ["バルタン星人","エレキング"]
+      },
+      {
+        stage: "122",
+        wave: 2,
+        obstacles: ["氷5個","雪5個"],
+        partners: ["バルタン星人","ベロクロン","エレキング"]
+      },
+      {
+        stage: "123",
+        wave: 1,
+        obstacles: ["氷6個","雪6個"],
+        partners: ["バルタン星人","エレキング"]
+      },
+      {
+        stage: "124",
+        wave: 2,
+        obstacles: ["氷7個","雪7個"],
+        partners: ["バルタン星人","ベロクロン","エレキング"]
+      },
+      {
+        stage: "125",
+        wave: 2,
+        obstacles: ["氷8個","雪8個"],
+        partners: ["バルタン星人","ベロクロン","ガンQ","エレキング"]
+      },
+      {
+        stage: "126",
+        wave: 1,
+        obstacles: ["氷9個","雪9個"],
+        partners: ["バルタン星人","ガンQ","エレキング"]
+      },
+      {
+        stage: "127",
+        wave: 2,
+        obstacles: ["氷10個","雪10個"],
+        partners: ["バルタン星人","ベロクロン","エレキング"]
+      },
+      {
+        stage: "128",
+        wave: 2,
+        obstacles: ["氷11個","雪11個"],
+        partners: ["バルタン星人","ベロクロン","エレキング"]
+      },
+      {
+        stage: "129",
+        wave: 1,
+        obstacles: ["氷12個","雪12個"],
+        partners: ["バルタン星人","ガンQ","エレキング"]
+      }
+    ]
+  },
+  
   NAME: {
     name: "NAME",
     locations: [
       {
         stage: "2",
         wave: 1,
-        obstacles: ["木箱7個"],
-        partners: []
+        obstacles: ["個"],
+        partners: ["",""]
       },
       {
         stage: "410",
         wave: 1,
-        obstacles: ["ガラス"],
+        obstacles: ["個"],
         partners: ["",""]
       }
     ]
