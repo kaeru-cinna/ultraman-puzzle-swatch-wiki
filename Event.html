@@ -43,12 +43,14 @@
         <th>最低Lvステージ<br>(周回)</th>
         <th>ダイヤ狙い<br>(周回)</th>
         <th>最高Lvステージ<br>(高耐久)</th>
+        <th>出現位置コピー</th>
       </tr>
       <tr>
         <td>エースキラー</td>
         <td>80</td>
         <td>480</td>
         <td>680</td>
+        <td><button id="copyBtn" onclick="copyText(エースキラー80)">コピー</button></td>
       </tr>
       <tr>
         <td>エルドギメラ</td>
@@ -63,6 +65,12 @@
         <td>678</td>
       </tr>
       <tr>
+        <td>ガッツ星人</td>
+        <td>-</td>
+        <td>-</td>
+        <td>730</td>
+      </tr>
+      <tr>
         <td>ガゾート</td>
         <td>92</td>
         <td>492</td>
@@ -73,6 +81,12 @@
         <td>5</td>
         <td>451</td>
         <td>658</td>
+      </tr>
+      <tr>
+        <td>カルミラ</td>
+        <td>-</td>
+        <td>-</td>
+        <td>750</td>
       </tr>
       <tr>
         <td>ガンQ</td>
@@ -343,6 +357,12 @@
         <td>90</td>
         <td>490</td>
         <td>690</td>
+      </tr>
+      <tr>
+        <td>メトロン星人</td>
+        <td>701</td>
+        <td>-</td>
+        <td>749</td>
       </tr>
       <tr>
         <td>メフィラス</td>
@@ -854,6 +874,21 @@
 <footer>
   © ウルトラマンパズルシュワッチ攻略まとめ
 </footer>
+
+<script>
+  function copyText(stage) {
+  const text = stage;
+
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById("copyBtn");
+    btn.textContent = "コピー済み！";
+
+    setTimeout(() => {
+      btn.textContent = "コピー";
+    }, 2000);
+  });
+}
+</script>
 
 <script src="include.js" defer></script>
 </body>
