@@ -274,6 +274,18 @@ const enemies = {
         wave: 1,
         obstacles: ["氷12個","雪12個"],
         partners: ["バルタン星人","ガンQ","エレキング"]
+      },
+      {
+        stage: "171",
+        wave: 1,
+        obstacles: ["氷塊4個"],
+        partners: ["ババルウ","エレキング"]
+      },
+      {
+        stage: "172",
+        wave: 2,
+        obstacles: ["氷塊5個","雪1個"],
+        partners: ["レイキュバス","ゼットン","エレキング"]
       }
     ]
   },
