@@ -8,6 +8,85 @@
   <link rel="stylesheet" href="style.css">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2529205461735673"
      crossorigin="anonymous"></script>
+     
+     <style>
+body {
+  font-family: sans-serif;
+  padding: 10px;
+  font-size: 14px;
+}
+
+/* 上部固定 */
+.header {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 10;
+  padding-bottom: 10px;
+}
+
+/* タグUI */
+.tag-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 14px;
+  padding: 8px 0;
+}
+
+.tag {
+  padding: 10px 14px;
+  border: 1px solid #aaa;
+  border-radius: 20px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.tag.active {
+  background: #007bff;
+  color: #fff;
+  border-color: #007bff;
+  font-weight: bold;
+}
+
+/* カード */
+.card {
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 12px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.card strong {
+  display: inline-block;
+  background: #007bff;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 6px;
+  margin-bottom: 6px;
+}
+
+/* クリック要素 */
+.char, .gimmick {
+  color: blue;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* ページネーション */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+button {
+  padding: 6px 10px;
+}
+</style>
+     
 </head>
 <body>
 
@@ -34,7 +113,7 @@
   </div>
 
   <h3>検索結果</h3>
-  <div id="result"><p>条件を選択してください</p></div>
+  <div id="result"></div>
 
   </main>
 

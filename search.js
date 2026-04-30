@@ -10,7 +10,7 @@ const data = [
     ]
   },
   {
-    stage: "230",
+    stage: "228",
     wave: 1,
     characters: ["バルタン星人"],
     gimmicks: [
@@ -22,15 +22,17 @@ const data = [
 // ===== 状態 =====
 let selectedChars = [];
 let selectedGimmicks = [];
-let searchTimer = null;
+let currentPage = 1;
+const perPage = 10;
+let timer;
 
 // ===== 一覧生成 =====
 const allChars = [...new Set(data.flatMap(d => d.characters))];
 const allGimmicks = [...new Set(data.flatMap(d => d.gimmicks.map(g => g.name)))];
 
 // ===== タグ生成 =====
-function createTags(containerId, list, type) {
-  const container = document.getElementById(containerId);
+function createTags(id, list, type) {
+  const container = document.getElementById(id);
 
   list.forEach(item => {
     const tag = document.createElement("span");
@@ -44,146 +46,126 @@ function createTags(containerId, list, type) {
 }
 
 // ===== タグ操作 =====
-function toggleTag(element, value, type) {
-  let target = type === "char" ? selectedChars : selectedGimmicks;
+function toggleTag(el, val, type) {
+  let arr = type === "char" ? selectedChars : selectedGimmicks;
   const max = type === "char" ? 3 : 2;
 
-  if (target.includes(value)) {
-    target = target.filter(v => v !== value);
-    element.classList.remove("active");
+  if (arr.includes(val)) {
+    arr = arr.filter(v => v !== val);
+    el.classList.remove("active");
   } else {
-    if (target.length >= max) {
+    if (arr.length >= max) {
       alert(`最大${max}まで`);
       return;
     }
-    target.push(value);
-    element.classList.add("active");
+    arr.push(val);
+    el.classList.add("active");
   }
 
-  if (type === "char") {
-    selectedChars = target;
-  } else {
-    selectedGimmicks = target;
-  }
+  if (type === "char") selectedChars = arr;
+  else selectedGimmicks = arr;
 
+  currentPage = 1;
   triggerSearch();
 }
 
 // ===== 即時検索 =====
 function triggerSearch() {
-  const resultDiv = document.getElementById("result");
-  resultDiv.innerHTML = "検索中...";
-
-  clearTimeout(searchTimer);
-  searchTimer = setTimeout(() => {
-    runSearch();
-  }, 100);
+  clearTimeout(timer);
+  timer = setTimeout(runSearch, 100);
 }
 
 // ===== 検索 =====
 function runSearch() {
   const resultDiv = document.getElementById("result");
 
-  if (selectedChars.length === 0 && selectedGimmicks.length === 0) {
-    resultDiv.innerHTML = "<p>条件を選択してください</p>";
-    return;
-  }
-
-  const result = data.filter(stage => {
-    const charMatch = selectedChars.every(c =>
-      stage.characters.includes(c)
-    );
-
-    const gimmickMatch = selectedGimmicks.every(g =>
-      stage.gimmicks.some(obj => obj.name === g)
-    );
-
-    return charMatch && gimmickMatch;
-  });
-
-  updateURL(selectedChars, selectedGimmicks);
+  let result = (selectedChars.length === 0 && selectedGimmicks.length === 0)
+    ? data
+    : data.filter(s =>
+        selectedChars.every(c => s.characters.includes(c)) &&
+        selectedGimmicks.every(g => s.gimmicks.some(x => x.name === g))
+      );
 
   if (result.length === 0) {
-    resultDiv.innerHTML = "<p>該当なし</p>";
+    resultDiv.innerHTML = "該当なし";
     return;
   }
 
-  result.sort((a, b) => a.stage.localeCompare(b.stage));
+  result.sort((a,b)=>a.stage.localeCompare(b.stage));
+
+  const total = Math.ceil(result.length / perPage);
+  const start = (currentPage - 1) * perPage;
+  const pageData = result.slice(start, start + perPage);
 
   resultDiv.innerHTML = `
-    <p>${result.length}件ヒット</p>
-    ${result.map(r => `
+    <p>${result.length}件中 ${start+1}〜${start+pageData.length}</p>
+
+    ${pageData.map(r=>`
       <div class="card">
         <strong>${r.stage} - Wave ${r.wave}</strong><br>
-        キャラ: ${r.characters.map(c =>
-          `<span class="char" onclick="quickSearchChar('${c}')">${c}</span>`
-        ).join(" / ")}<br>
-        ギミック: ${r.gimmicks.map(g =>
-          `<span class="gimmick" onclick="quickSearchGimmick('${g.name}')">${g.name}(${g.count})</span>`
-        ).join(" / ")}
+        キャラ: ${r.characters.map(c=>`<span class="char" onclick="quickChar('${c}')">${c}</span>`).join(" / ")}<br>
+        ギミック: ${r.gimmicks.map(g=>`<span class="gimmick" onclick="quickGimmick('${g.name}')">${g.name}(${g.count})</span>`).join(" / ")}
       </div>
     `).join("")}
+
+    <div class="pagination">
+      <button onclick="prev()" ${currentPage===1?"disabled":""}>前へ</button>
+      ${currentPage} / ${total}
+      <button onclick="next()" ${currentPage===total?"disabled":""}>次へ</button>
+    </div>
   `;
+
+  updateURL();
 }
+
+// ===== ページ操作 =====
+function next(){ currentPage++; runSearch(); }
+function prev(){ currentPage--; runSearch(); }
 
 // ===== 逆引き =====
-function quickSearchChar(name) {
-  selectedChars = [name];
-  selectedGimmicks = [];
+function quickChar(name){
+  selectedChars=[name];
+  selectedGimmicks=[];
   resetTags();
-  triggerSearch();
+  runSearch();
 }
 
-function quickSearchGimmick(name) {
-  selectedChars = [];
-  selectedGimmicks = [name];
+function quickGimmick(name){
+  selectedChars=[];
+  selectedGimmicks=[name];
   resetTags();
-  triggerSearch();
+  runSearch();
 }
 
-// ===== タグリセット =====
-function resetTags() {
-  document.querySelectorAll(".tag").forEach(tag => {
+// ===== タグ同期 =====
+function resetTags(){
+  document.querySelectorAll(".tag").forEach(tag=>{
     tag.classList.remove("active");
-
-    if (selectedChars.includes(tag.textContent) ||
-        selectedGimmicks.includes(tag.textContent)) {
+    if(selectedChars.includes(tag.textContent) || selectedGimmicks.includes(tag.textContent)){
       tag.classList.add("active");
     }
   });
 }
 
-// ===== URL更新 =====
-function updateURL(chars, gimmicks) {
-  const params = new URLSearchParams();
-
-  if (chars.length) params.set("char", chars.join(","));
-  if (gimmicks.length) params.set("gimmick", gimmicks.join(","));
-
-  history.replaceState(null, "", `?${params.toString()}`);
+// ===== URL =====
+function updateURL(){
+  const p=new URLSearchParams();
+  if(selectedChars.length)p.set("char",selectedChars.join(","));
+  if(selectedGimmicks.length)p.set("gimmick",selectedGimmicks.join(","));
+  history.replaceState(null,"","?"+p.toString());
 }
 
-// ===== URL復元 =====
-function loadFromURL() {
-  const params = new URLSearchParams(location.search);
-
-  const chars = params.get("char")?.split(",") || [];
-  const gimmicks = params.get("gimmick")?.split(",") || [];
-
-  selectedChars = chars;
-  selectedGimmicks = gimmicks;
-
+function loadURL(){
+  const p=new URLSearchParams(location.search);
+  selectedChars=p.get("char")?.split(",")||[];
+  selectedGimmicks=p.get("gimmick")?.split(",")||[];
   resetTags();
-
-  if (chars.length || gimmicks.length) {
-    triggerSearch();
-  }
 }
 
 // ===== 初期化 =====
-window.onload = () => {
-  createTags("charTags", allChars, "char");
-  createTags("gimmickTags", allGimmicks, "gimmick");
-
-  loadFromURL();
+window.onload=()=>{
+  createTags("charTags",allChars,"char");
+  createTags("gimmickTags",allGimmicks,"gimmick");
+  loadURL();
+  runSearch();
 };
