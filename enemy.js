@@ -286,6 +286,84 @@ const enemies = {
         wave: 2,
         obstacles: ["氷塊5個","雪1個"],
         partners: ["レイキュバス","ゼットン","エレキング"]
+      },
+      {
+        stage: "173",
+        wave: 1,
+        obstacles: ["氷塊6個","雪2個"],
+        partners: ["ババルウ","エレキング"]
+      },
+      {
+        stage: "174",
+        wave: 2,
+        obstacles: ["氷塊7個","雪3個"],
+        partners: ["ババルウ","ゼットン","エレキング"]
+      },
+      {
+        stage: "175",
+        wave: 2,
+        obstacles: ["氷塊8個","雪4個"],
+        partners: ["ババルウ","ゼットン","レイキュバス","エレキング"]
+      },
+      {
+        stage: "178",
+        wave: 2,
+        obstacles: ["氷塊11個","雪7個"],
+        partners: ["ババルウ","ゼットン","エレキング"]
+      },
+      {
+        stage: "221",
+        wave: 1,
+        obstacles: ["氷4個","雪4個"],
+        partners: ["バルタン星人","エレキング"]
+      },
+      {
+        stage: "222",
+        wave: 2,
+        obstacles: ["氷5個","雪5個"],
+        partners: ["バルタン星人","ベロクロン","エレキング"]
+      },
+      {
+        stage: "223",
+        wave: 1,
+        obstacles: ["氷6個","雪6個"],
+        partners: ["バルタン星人","エレキング"]
+      },
+      {
+        stage: "224",
+        wave: 2,
+        obstacles: ["氷7個","雪7個"],
+        partners: ["バルタン星人","ベロクロン","エレキング"]
+      },
+      {
+        stage: "225",
+        wave: 2,
+        obstacles: ["氷8個","雪8個"],
+        partners: ["バルタン星人","ベロクロン","ガンQ","エレキング"]
+      },
+      {
+        stage: "226",
+        wave: 1,
+        obstacles: ["氷9個","雪9個"],
+        partners: ["バルタン星人","ガンQ","エレキング"]
+      },
+      {
+        stage: "227",
+        wave: 2,
+        obstacles: ["氷10個","雪10個"],
+        partners: ["バルタン星人","ベロクロン","エレキング"]
+      },
+      {
+        stage: "228",
+        wave: 2,
+        obstacles: ["氷11個","雪11個"],
+        partners: ["バルタン星人","ベロクロン","エレキング"]
+      },
+      {
+        stage: "229",
+        wave: 1,
+        obstacles: ["氷12個","雪12個"],
+        partners: ["バルタン星人","ガンQ","エレキング"]
       }
     ]
   },
