@@ -10,11 +10,19 @@ const data = [
     ]
   },
   {
-    stage: "228",
+    stage: "230",
     wave: 1,
     characters: ["バルタン星人"],
     gimmicks: [
       { name: "氷", count: 5 }
+    ]
+  },
+  {
+    stage: "410",
+    wave: 1,
+    characters: ["ゴモラ"],
+    gimmicks: [
+      { name: "ガラス", count: 24 }
     ]
   }
 ];
