@@ -1,28 +1,91 @@
 // ===== データ =====
 const data = [
   {
-    stage: "228",
-    wave: 2,
-    characters: ["バルタン星人","ベロクロン","エレキング"],
-    gimmicks: [
-      { name: "氷", count: 11 },
-      { name: "雪", count: 11 }
-    ]
-  },
-  {
-    stage: "230",
+    stage: "1",
     wave: 1,
-    characters: ["バルタン星人"],
+    characters: ["デマーガ"],
     gimmicks: [
-      { name: "氷", count: 5 }
     ]
   },
   {
-    stage: "410",
+    stage: "2",
     wave: 1,
     characters: ["ゴモラ"],
     gimmicks: [
-      { name: "ガラス", count: 24 }
+    ]
+  },
+  {
+    stage: "3",
+    wave: 2,
+    characters: ["シャゴン","シャゴン","シャゴン"],
+    gimmicks: [
+      { name: "木箱", count: 2 }
+    ]
+  },
+  {
+    stage: "4",
+    wave: 2,
+    characters: ["ツインテール","ツインテール","ツインテール"],
+    gimmicks: [
+      { name: "木箱", count: 7 }
+    ]
+  },
+  {
+    stage: "5",
+    wave: 3,
+    characters: ["ガラオン","グドン","タガヌラー","タガヌラー","タガヌラー"],
+    gimmicks: [
+      { name: "木箱", count: 12 }
+    ]
+  },
+  {
+    stage: "6",
+    wave: 2,
+    characters: ["ホロボロス","ダダ"],
+    gimmicks: [
+      { name: "木箱", count: 42 }
+    ]
+  },
+  {
+    stage: "7",
+    wave: 1,
+    characters: ["バードン"],
+    gimmicks: [
+      { name: "木箱", count: 10 }
+    ]
+  },
+  {
+    stage: "8",
+    wave: 2,
+    characters: ["ノーバ","バードン"],
+    gimmicks: [
+      { name: "木箱", count: 4 },
+      { name: "ガラス", count: 4 }
+    ]
+  },
+  {
+    stage: "9",
+    wave: 2,
+    characters: ["エレキング","ベムスター"],
+    gimmicks: [
+      { name: "木箱", count: 12 }
+    ]
+  },
+  {
+    stage: "10",
+    wave: 1,
+    characters: ["ゴモラ"],
+    gimmicks: [
+      { name: "木箱", count: 24 },
+      { name: "ガラス", count: 6 }
+    ]
+  },
+  {
+    stage: "",
+    wave: ,
+    characters: ["",""],
+    gimmicks: [
+      { name: "", count: 2 }
     ]
   }
 ];
