@@ -81,11 +81,11 @@ const data = [
     ]
   },
   {
-    stage: "",
-    wave: ,
-    characters: ["",""],
+    stage: "11",
+    wave: 1,
+    characters: ["ゴモラ","シャゴン"],
     gimmicks: [
-      { name: "", count: 2 }
+      { name: "ツル", count: 2 }
     ]
   }
 ];
