@@ -98,8 +98,8 @@ const perPage = 10;
 let timer;
 
 // ===== 一覧生成 =====
-const allChars = [...new Set(data.flatMap(d => d.characters))];
-const allGimmicks = [...new Set(data.flatMap(d => d.gimmicks.map(g => g.name)))];
+const allChars = [...new Set(data.flatMap(d => d.characters))].sort((a, b) => a.localeCompare(b, "ja", { sensitivity: "base" }));
+const allGimmicks = [...new Set(data.flatMap(d => d.gimmicks.map(g => g.name)))].sort((a, b) => a.localeCompare(b, "ja", { sensitivity: "base" }));
 
 // ===== タグ生成 =====
 function createTags(id, list, type) {
