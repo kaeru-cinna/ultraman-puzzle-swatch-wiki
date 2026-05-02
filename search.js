@@ -162,7 +162,7 @@ function runSearch() {
     return;
   }
 
-  result.sort((a,b)=>a.stage.localeCompare(b.stage));
+  result.sort((a, b) => Number(a.stage) - Number(b.stage));
 
   const total = Math.ceil(result.length / perPage);
   const start = (currentPage - 1) * perPage;
