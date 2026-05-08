@@ -637,7 +637,7 @@ const data = [
     wave: 1,
     characters: ["エースキラー"],
     gimmicks: [
-      { name: "石化", count: 22 }
+      { name: "氷", count: 22 }
     ]
   },
   {
