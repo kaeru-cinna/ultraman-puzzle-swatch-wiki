@@ -219,7 +219,7 @@ const data = [
   {
     stage: "28",
     wave: 2,
-    characters: [バルタン星人","ベロクロン","エレキング"],
+    characters: ["バルタン星人","ベロクロン","エレキング"],
     gimmicks: [
       { name: "雪", count: 22 }
     ]
