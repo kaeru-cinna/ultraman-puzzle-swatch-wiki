@@ -27,7 +27,7 @@ body {
 /* タグUI */
 .tag-container {
   display: flex;
-  overflow-x: auto;
+  flex-wrap: wrap;
   gap: 14px;
   padding: 8px 0;
 }
@@ -37,7 +37,6 @@ body {
   border: 1px solid #aaa;
   border-radius: 20px;
   cursor: pointer;
-  white-space: nowrap;
 }
 
 .tag.active {
