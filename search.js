@@ -239,6 +239,166 @@ const data = [
     gimmicks: [
       { name: "雪", count: 26 }
     ]
+  },
+  {
+    stage: "31",
+    wave: 1,
+    characters: ["スラン星人","ダダ"],
+    gimmicks: [
+      { name: "砂利", count: 8 }
+    ]
+  },
+  {
+    stage: "32",
+    wave: 2,
+    characters: ["スラン星人","ダダ","デマーガ"],
+    gimmicks: [
+      { name: "砂利", count: 10 }
+    ]
+  },
+  {
+    stage: "33",
+    wave: 1,
+    characters: ["スラン星人","ダダ"],
+    gimmicks: [
+      { name: "砂利", count: 12 }
+    ]
+  },
+  {
+    stage: "34",
+    wave: 2,
+    characters: ["ダダ","デマーガ","スラン星人"],
+    gimmicks: [
+      { name: "砂利", count: 14 }
+    ]
+  },
+  {
+    stage: "35",
+    wave: 2,
+    characters: ["モンスアーガー","ダダ","デマーガ","スラン星人"],
+    gimmicks: [
+      { name: "砂利", count: 16 }
+    ]
+  },
+  {
+    stage: "36",
+    wave: 1,
+    characters: ["スラン星人","モンスアーガー","ダダ"],
+    gimmicks: [
+      { name: "砂利", count: 18 }
+    ]
+  },
+  {
+    stage: "37",
+    wave: 2,
+    characters: ["ダダ","ダダ","デマーガ"],
+    gimmicks: [
+      { name: "砂利", count: 20 }
+    ]
+  },
+  {
+    stage: "38",
+    wave: 2,
+    characters: ["ダダ","デマーガ","モンスアーガー"],
+    gimmicks: [
+      { name: "砂利", count: 22 }
+    ]
+  },
+  {
+    stage: "39",
+    wave: 1,
+    characters: ["スラン星人","モンスアーガー","ダダ"],
+    gimmicks: [
+      { name: "砂利", count: 24 }
+    ]
+  },
+  {
+    stage: "40",
+    wave: 1,
+    characters: ["バードン"],
+    gimmicks: [
+      { name: "砂利", count: 26 }
+    ]
+  },
+  {
+    stage: "41",
+    wave: 1,
+    characters: ["ベムスター","デスドラゴ"],
+    gimmicks: [
+      { name: "砂", count: 8 }
+    ]
+  },
+  {
+    stage: "42",
+    wave: 2,
+    characters: ["ゴモラ","ベムスター","デスドラゴ"],
+    gimmicks: [
+      { name: "砂", count: 10 }
+    ]
+  },
+  {
+    stage: "43",
+    wave: 1,
+    characters: ["ベムスター","デスドラゴ"],
+    gimmicks: [
+      { name: "砂", count: 12 }
+    ]
+  },
+  {
+    stage: "44",
+    wave: 2,
+    characters: ["ベムスター","デスドラゴ","ゴモラ"],
+    gimmicks: [
+      { name: "砂", count: 14 }
+    ]
+  },
+  {
+    stage: "45",
+    wave: 2,
+    characters: ["ベムスター","デスドラゴ","ベムスター","デスドラゴ"],
+    gimmicks: [
+      { name: "砂", count: 16 }
+    ]
+  },
+  {
+    stage: "46",
+    wave: 1,
+    characters: ["ベムスター","デスドラゴ","ゴモラ"],
+    gimmicks: [
+      { name: "砂", count: 18 }
+    ]
+  },
+  {
+    stage: "47",
+    wave: 2,
+    characters: ["ゴモラ","ベムスター","デスドラゴ"],
+    gimmicks: [
+      { name: "砂", count: 20 }
+    ]
+  },
+  {
+    stage: "48",
+    wave: 2,
+    characters: ["ベムスター","デスドラゴ","ゴモラ"],
+    gimmicks: [
+      { name: "砂", count: 22 }
+    ]
+  },
+  {
+    stage: "49",
+    wave: 1,
+    characters: ["ベムスター","デスドラゴ","ゴモラ"],
+    gimmicks: [
+      { name: "砂", count: 24 }
+    ]
+  },
+  {
+    stage: "50",
+    wave: 1,
+    characters: ["ゼットン"],
+    gimmicks: [
+      { name: "砂", count: 26 }
+    ]
   }
 ];
 
