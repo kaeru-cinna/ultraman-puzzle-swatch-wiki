@@ -167,6 +167,78 @@ const data = [
     gimmicks: [
       { name: "雪", count: 8 }
     ]
+  },
+  {
+    stage: "22",
+    wave: 2,
+    characters: ["エレキング","バルタン星人","ベロクロン"],
+    gimmicks: [
+      { name: "雪", count: 10 }
+    ]
+  },
+  {
+    stage: "23",
+    wave: 2,
+    characters: ["バルタン星人","エレキング"],
+    gimmicks: [
+      { name: "雪", count: 12 }
+    ]
+  },
+  {
+    stage: "24",
+    wave: 2,
+    characters: ["バルタン星人","ベロクロン","エレキング"],
+    gimmicks: [
+      { name: "雪", count: 14 }
+    ]
+  },
+  {
+    stage: "25",
+    wave: 2,
+    characters: ["バルタン星人","ベロクロン","エレキング","ガンQ"],
+    gimmicks: [
+      { name: "雪", count: 16 }
+    ]
+  },
+  {
+    stage: "26",
+    wave: 1,
+    characters: ["バルタン星人","エレキング","ガンQ"],
+    gimmicks: [
+      { name: "雪", count: 18 }
+    ]
+  },
+  {
+    stage: "27",
+    wave: 2,
+    characters: ["エレキング","バルタン星人","ベロクロン"],
+    gimmicks: [
+      { name: "雪", count: 20 }
+    ]
+  },
+  {
+    stage: "28",
+    wave: 2,
+    characters: [バルタン星人","ベロクロン","エレキング"],
+    gimmicks: [
+      { name: "雪", count: 22 }
+    ]
+  },
+  {
+    stage: "29",
+    wave: 1,
+    characters: ["バルタン星人","エレキング","ガンQ"],
+    gimmicks: [
+      { name: "雪", count: 24 }
+    ]
+  },
+  {
+    stage: "30",
+    wave: 1,
+    characters: ["レイキュバス"],
+    gimmicks: [
+      { name: "雪", count: 26 }
+    ]
   }
 ];
 
@@ -253,7 +325,7 @@ function runSearch() {
 
     ${pageData.map(r=>`
       <div class="card">
-        <strong>${r.stage} - Wave ${r.wave}</strong><br>
+        <strong>Stage ${r.stage} - Wave ${r.wave}</strong><br>
         キャラ: ${r.characters.map(c=>`<span class="char" onclick="quickChar('${c}')">${c}</span>`).join(" / ")}<br>
         ギミック: ${r.gimmicks.map(g=>`<span class="gimmick" onclick="quickGimmick('${g.name}')">${g.name}(${g.count})</span>`).join(" / ")}
       </div>
