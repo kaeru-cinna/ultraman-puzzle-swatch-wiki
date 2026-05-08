@@ -83,9 +83,89 @@ const data = [
   {
     stage: "11",
     wave: 1,
-    characters: ["ゴモラ","シャゴン"],
+    characters: ["ババルウ","デマーガ"],
     gimmicks: [
-      { name: "ツル", count: 2 }
+      { name: "巨大植物", count: 8 }
+    ]
+  },
+  {
+    stage: "12",
+    wave: 2,
+    characters: ["タガヌラー","タガヌラー","ババルウ"],
+    gimmicks: [
+      { name: "巨大植物", count: 10 }
+    ]
+  },
+  {
+    stage: "13",
+    wave: 1,
+    characters: ["ババルウ","デマーガ"],
+    gimmicks: [
+      { name: "巨大植物", count: 12 }
+    ]
+  },
+  {
+    stage: "14",
+    wave: 2,
+    characters: ["タガヌラー","ババルウ","デマーガ"],
+    gimmicks: [
+      { name: "巨大植物", count: 14 }
+    ]
+  },
+  {
+    stage: "15",
+    wave: 2,
+    characters: ["タガヌラー","ババルウ","モンスアーガー","ガンQ"],
+    gimmicks: [
+      { name: "巨大植物", count: 16 }
+    ]
+  },
+  {
+    stage: "16",
+    wave: 1,
+    characters: ["ババルウ","モンスアーガー","ガンQ"],
+    gimmicks: [
+      { name: "巨大植物", count: 18 }
+    ]
+  },
+  {
+    stage: "17",
+    wave: 2,
+    characters: ["モンスアーガー","タガヌラー","ババルウ"],
+    gimmicks: [
+      { name: "巨大植物", count: 20 }
+    ]
+  },
+  {
+    stage: "18",
+    wave: 2,
+    characters: ["タガヌラー","ババルウ","デマーガ"],
+    gimmicks: [
+      { name: "巨大植物", count: 22 }
+    ]
+  },
+  {
+    stage: "19",
+    wave: 1,
+    characters: ["ババルウ","モンスアーガー","ガンQ"],
+    gimmicks: [
+      { name: "巨大植物", count: 24 }
+    ]
+  },
+  {
+    stage: "20",
+    wave: 1,
+    characters: ["巨大ヤプール"],
+    gimmicks: [
+      { name: "巨大植物", count: 26 }
+    ]
+  },
+  {
+    stage: "21",
+    wave: 1,
+    characters: ["バルタン星人","エレキング"],
+    gimmicks: [
+      { name: "雪", count: 8 }
     ]
   }
 ];
