@@ -1250,6 +1250,451 @@ const data = [
       { name: "石化", count: 18 },
       { name: "砂", count: 6 }
     ]
+  },
+  {
+    stage: "151",
+    wave: 1,
+    characters: ["ギャラクトロン","ガラオン"],
+    gimmicks: [
+      { name: "銅板", count: 4 }
+    ]
+  },
+  {
+    stage: "152",
+    wave: 2,
+    characters: ["ギャラクトロン","バジリス","スキューラ"],
+    gimmicks: [
+      { name: "銅板", count: 5 },
+      { name: "木箱", count: 1 }
+    ]
+  },
+  {
+    stage: "153",
+    wave: 1,
+    characters: ["ギャラクトロン","ガラオン"],
+    gimmicks: [
+      { name: "銅板", count: 6 },
+      { name: "木箱", count: 2 }
+    ]
+  },
+  {
+    stage: "154",
+    wave: 2,
+    characters: ["ギャラクトロン","ガラオン","バジリス"],
+    gimmicks: [
+      { name: "銅板", count: 7 },
+      { name: "木箱", count: 3 }
+    ]
+  },
+  {
+    stage: "155",
+    wave: 2,
+    characters: ["ギャラクトロン","ガラオン","バジリス","スキューラ"],
+    gimmicks: [
+      { name: "銅板", count: 8 },
+      { name: "木箱", count: 4 }
+    ]
+  },
+  {
+    stage: "156",
+    wave: 1,
+    characters: ["ギャラクトロン","バジリス","スキューラ"],
+    gimmicks: [
+      { name: "銅板", count: 9 },
+      { name: "木箱", count: 5 }
+    ]
+  },
+  {
+    stage: "157",
+    wave: 2,
+    characters: ["ガラオン","バジリス","スキューラ"],
+    gimmicks: [
+      { name: "銅板", count: 10 },
+      { name: "木箱", count: 6 }
+    ]
+  },
+  {
+    stage: "158",
+    wave: 2,
+    characters: ["ギャラクトロン","ガラオン","バジリス"],
+    gimmicks: [
+      { name: "銅板", count: 11 },
+      { name: "木箱", count: 7 }
+    ]
+  },
+  {
+    stage: "159",
+    wave: 1,
+    characters: ["ギャラクトロン","バジリス","スキューラ"],
+    gimmicks: [
+      { name: "銅板", count: 12 },
+      { name: "木箱", count: 8 }
+    ]
+  },
+  {
+    stage: "160",
+    wave: 1,
+    characters: ["キングオブモンス"],
+    gimmicks: [
+      { name: "銅板", count: 13 },
+      { name: "木箱", count: 9 }
+    ]
+  },
+  {
+    stage: "161",
+    wave: 1,
+    characters: ["ゴルザ","メルバ"],
+    gimmicks: [
+      { name: "丸太", count: 4 }
+    ]
+  },
+  {
+    stage: "162",
+    wave: 2,
+    characters: ["ダダ","ゴルザ","メルバ"],
+    gimmicks: [
+      { name: "丸太", count: 5 },
+      { name: "巨大植物", count: 1 }
+    ]
+  },
+  {
+    stage: "163",
+    wave: 1,
+    characters: ["ゴルザ","メルバ"],
+    gimmicks: [
+      { name: "丸太", count: 6 },
+      { name: "巨大植物", count: 2 }
+    ]
+  },
+  {
+    stage: "164",
+    wave: 2,
+    characters: ["ダダ","シャゴン","ゴルザ"],
+    gimmicks: [
+      { name: "丸太", count: 7 },
+      { name: "巨大植物", count: 3 }
+    ]
+  },
+  {
+    stage: "165",
+    wave: 2,
+    characters: ["ダダ","ゴルザ","メルバ","シャゴン"],
+    gimmicks: [
+      { name: "丸太", count: 8 },
+      { name: "巨大植物", count: 4 }
+    ]
+  },
+  {
+    stage: "166",
+    wave: 1,
+    characters: ["ゴルザ","シャゴン","メルバ"],
+    gimmicks: [
+      { name: "丸太", count: 9 },
+      { name: "巨大植物", count: 5 }
+    ]
+  },
+  {
+    stage: "167",
+    wave: 2,
+    characters: ["シャゴン","ゴルザ","メルバ"],
+    gimmicks: [
+      { name: "丸太", count: 10 },
+      { name: "巨大植物", count: 6 }
+    ]
+  },
+  {
+    stage: "168",
+    wave: 2,
+    characters: ["ダダ","ゴルザ","メルバ"],
+    gimmicks: [
+      { name: "丸太", count: 11 },
+      { name: "巨大植物", count: 7 }
+    ]
+  },
+  {
+    stage: "169",
+    wave: 1,
+    characters: ["ゴルザ","シャゴン","メルバ"],
+    gimmicks: [
+      { name: "丸太", count: 12 },
+      { name: "巨大植物", count: 8 }
+    ]
+  },
+  {
+    stage: "170",
+    wave: 1,
+    characters: ["デストルドス"],
+    gimmicks: [
+      { name: "丸太", count: 13 },
+      { name: "巨大植物", count: 9 }
+    ]
+  },
+  {
+    stage: "171",
+    wave: 1,
+    characters: ["エレキング","ババルウ"],
+    gimmicks: [
+      { name: "氷塊", count: 4 }
+    ]
+  },
+  {
+    stage: "172",
+    wave: 2,
+    characters: ["エレキング","レイキュバス","ゼットン"],
+    gimmicks: [
+      { name: "氷塊", count: 5 },
+      { name: "雪", count: 1 }
+    ]
+  },
+  {
+    stage: "173",
+    wave: 1,
+    characters: ["エレキング","ババルウ"],
+    gimmicks: [
+      { name: "氷塊", count: 6 },
+      { name: "雪", count: 2 }
+    ]
+  },
+  {
+    stage: "174",
+    wave: 2,
+    characters: ["ババルウ","エレキング","ゼットン"],
+    gimmicks: [
+      { name: "氷塊", count: 7 },
+      { name: "雪", count: 3 }
+    ]
+  },
+  {
+    stage: "175",
+    wave: 2,
+    characters: ["エレキング","レイキュバス","ババルウ","ゼットン"],
+    gimmicks: [
+      { name: "氷塊", count: 8 },
+      { name: "雪", count: 4 }
+    ]
+  },
+  {
+    stage: "176",
+    wave: 1,
+    characters: ["ゼットン","レイキュバス","ババルウ"],
+    gimmicks: [
+      { name: "氷塊", count: 9 },
+      { name: "雪", count: 5 }
+    ]
+  },
+  {
+    stage: "177",
+    wave: 2,
+    characters: ["ババルウ","レイキュバス","ゼットン"],
+    gimmicks: [
+      { name: "氷塊", count: 10 },
+      { name: "雪", count: 6 }
+    ]
+  },
+  {
+    stage: "178",
+    wave: 2,
+    characters: ["ババルウ","エレキング","ゼットン"],
+    gimmicks: [
+      { name: "氷塊", count: 11 },
+      { name: "雪", count: 7 }
+    ]
+  },
+  {
+    stage: "179",
+    wave: 1,
+    characters: ["ゼットン","レイキュバス","ババルウ"],
+    gimmicks: [
+      { name: "氷塊", count: 12 },
+      { name: "雪", count: 8 }
+    ]
+  },
+  {
+    stage: "180",
+    wave: 1,
+    characters: ["タイラント"],
+    gimmicks: [
+      { name: "氷塊", count: 13 },
+      { name: "雪", count: 9 }
+    ]
+  },
+  {
+    stage: "181",
+    wave: 1,
+    characters: ["バルタン星人","バードン"],
+    gimmicks: [
+      { name: "岩石", count: 4 }
+    ]
+  },
+  {
+    stage: "182",
+    wave: 2,
+    characters: ["バードン","スラン星人","ダダ"],
+    gimmicks: [
+      { name: "岩石", count: 5 },
+      { name: "砂利", count: 1 }
+    ]
+  },
+  {
+    stage: "183",
+    wave: 1,
+    characters: ["バルタン星人","バードン"],
+    gimmicks: [
+      { name: "岩石", count: 6 },
+      { name: "砂利", count: 2 }
+    ]
+  },
+  {
+    stage: "184",
+    wave: 2,
+    characters: ["バルタン星人","ダダ","スラン星人"],
+    gimmicks: [
+      { name: "岩石", count: 7 },
+      { name: "砂利", count: 3 }
+    ]
+  },
+  {
+    stage: "185",
+    wave: 2,
+    characters: ["モンスアーガー","ダダ","バードン","スラン星人"],
+    gimmicks: [
+      { name: "岩石", count: 8 },
+      { name: "砂利", count: 4 }
+    ]
+  },
+  {
+    stage: "186",
+    wave: 1,
+    characters: ["バードン","バルタン星人","スラン星人"],
+    gimmicks: [
+      { name: "岩石", count: 9 },
+      { name: "砂利", count: 5 }
+    ]
+  },
+  {
+    stage: "187",
+    wave: 2,
+    characters: ["バルタン星人","バードン","スラン星人"],
+    gimmicks: [
+      { name: "岩石", count: 10 },
+      { name: "砂利", count: 6 }
+    ]
+  },
+  {
+    stage: "188",
+    wave: 2,
+    characters: ["バードン","スラン星人","ダダ"],
+    gimmicks: [
+      { name: "岩石", count: 11 },
+      { name: "砂利", count: 7 }
+    ]
+  },
+  {
+    stage: "189",
+    wave: 1,
+    characters: ["バードン","バルタン星人","スラン星人"],
+    gimmicks: [
+      { name: "岩石", count: 12 },
+      { name: "砂利", count: 8 }
+    ]
+  },
+  {
+    stage: "190",
+    wave: 1,
+    characters: ["マグマ星人"],
+    gimmicks: [
+      { name: "岩石", count: 13 },
+      { name: "砂利", count: 9 }
+    ]
+  },
+  {
+    stage: "191",
+    wave: 1,
+    characters: ["ベムスター","ベロクロン"],
+    gimmicks: [
+      { name: "神殿", count: 4 }
+    ]
+  },
+  {
+    stage: "192",
+    wave: 2,
+    characters: ["ベロクロン","マグマ星人","ガゾート"],
+    gimmicks: [
+      { name: "神殿", count: 5 },
+      { name: "砂", count: 1 }
+    ]
+  },
+  {
+    stage: "193",
+    wave: 1,
+    characters: ["ベムスター","ベロクロン"],
+    gimmicks: [
+      { name: "神殿", count: 6 },
+      { name: "砂", count: 2 }
+    ]
+  },
+  {
+    stage: "194",
+    wave: 2,
+    characters: ["ベロクロン","ベムスター","マグマ星人"],
+    gimmicks: [
+      { name: "神殿", count: 7 },
+      { name: "砂", count: 3 }
+    ]
+  },
+  {
+    stage: "195",
+    wave: 2,
+    characters: ["ベムスター","ベロクロン","マグマ星人","ガゾート"],
+    gimmicks: [
+      { name: "神殿", count: 8 },
+      { name: "砂", count: 4 }
+    ]
+  },
+  {
+    stage: "196",
+    wave: 1,
+    characters: ["ガゾート","マグマ星人","ベロクロン"],
+    gimmicks: [
+      { name: "神殿", count: 9 },
+      { name: "砂", count: 5 }
+    ]
+  },
+  {
+    stage: "197",
+    wave: 2,
+    characters: ["ベムスター","マグマ星人","ガゾート"],
+    gimmicks: [
+      { name: "神殿", count: 10 },
+      { name: "砂", count: 6 }
+    ]
+  },
+  {
+    stage: "198",
+    wave: 2,
+    characters: ["ベロクロン","ベムスター","マグマ星人"],
+    gimmicks: [
+      { name: "神殿", count: 11 },
+      { name: "砂", count: 7 }
+    ]
+  },
+  {
+    stage: "199",
+    wave: 1,
+    characters: ["ガゾート","マグマ星人","ベロクロン"],
+    gimmicks: [
+      { name: "神殿", count: 12 },
+      { name: "砂", count: 8 }
+    ]
+  },
+  {
+    stage: "200",
+    wave: 1,
+    characters: ["ゼットン"],
+    gimmicks: [
+      { name: "神殿", count: 13 },
+      { name: "砂", count: 9 }
+    ]
   }
 ];
 
