@@ -2232,8 +2232,8 @@ function runSearch() {
     ${pageData.map(r=>`
       <div class="card">
         <strong>Stage ${r.stage} - Wave ${r.wave}</strong><br>
-        キャラ: ${[...r.characters].sort((a, b) => a.localeCompare(b, "ja")).map(c =>`<span class="char" onclick="quickChar('${c}')">${c}</span>`).join(" / ")}<br>
-        ギミック: ${[...r.gimmicks].sort((a, b) => a.name.localeCompare(b.name, "ja")).map(g =>`<span class="gimmick" onclick="quickGimmick('${g.name}')">${g.name}(${g.count})</span>`).join(" / ")}
+        キャラ: ${[...r.characters].sort((a, b) => a.localeCompare(b, "ja", { sensitivity: "base" }).map(c =>`<span class="char" onclick="quickChar('${c}')">${c}</span>`).join(" / ")}<br>
+        ギミック: ${[...r.gimmicks].sort((a, b) => a.name.localeCompare(b.name, "ja", { sensitivity: "base" })).map(g =>`<span class="gimmick" onclick="quickGimmick('${g.name}')">${g.name}(${g.count})</span>`).join(" / ")}
       </div>
     `).join("")}
 
