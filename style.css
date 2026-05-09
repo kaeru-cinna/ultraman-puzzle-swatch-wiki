@@ -48,6 +48,7 @@ header nav a {
 
 /* ===== 目次 ===== */
 .toc-fixed {
+  position: sticky;
   top: 90px;
   background: rgba(0, 40, 80, 0.6);
   backdrop-filter: blur(6px);
@@ -74,11 +75,6 @@ header nav a {
 
 .toc-fixed.collapsed h3 {
   display: none;
-}
-
-.toc-fixed.collapsed a {
-  writing-mode: vertical-rl;
-  font-size: 12px;
 }
 
 /* ===== メイン ===== */
