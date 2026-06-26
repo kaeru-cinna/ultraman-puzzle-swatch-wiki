@@ -40,7 +40,7 @@ characterSearchSelectedTags.add(tag); renderTags(); renderTable(); };
 tagArea.appendChild(b); }); }
 
 function renderTable(){ tbody.innerHTML=""; let
-list=[…characterSearchCharacters].sort((a,b)=>a.name.localeCompare(b.name,"ja"));
+list=[...characterSearchCharacters].sort((a,b)=>a.name.localeCompare(b.name,"ja"));
 if(characterSearchSelectedTags.size){
 list=list.filter(c=>[...characterSearchSelectedTags].every(t=>c.tags.includes(t)));
 } resultCount.textContent="検索結果："+list.length+"件";
