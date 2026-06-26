@@ -4,8 +4,8 @@ const characterSearchCharacters=[
  class:"マン",
  special:"・1列の敵に3150%ダメージ。\n・1ターン味方の通常攻撃45%アップ",
  ability:"・基本攻撃力+23%",
- rinkCard:"・ウルトラヒーローズ\n『ウルトラマン』",
- tags:["怪獣","ボム系","高火力"]
+ rinkCard:"・ウルトラヒーローズ\n・『ウルトラマン』",
+ tags:["基本攻撃","通常攻撃"]
  },
 {name:"ババルウ",
  rarity:"◇1",
