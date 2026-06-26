@@ -46,7 +46,7 @@ list=list.filter(c=>[...characterSearchSelectedTags].every(t=>c.tags.includes(t)
 } resultCount.textContent="検索結果："+list.length+"件";
 noResult.style.display=list.length?"none":"block"; list.forEach(c=>{
 const tr=document.createElement("tr");
-[c.name,c.rarity,c.class,c.special,c.ability,c.rinkCard].forEach(v=>{
+[c.name,c.rarity,c.class,c.special,c.ability,c.rinkCard].forEach(v,index=>{
 const td=document.createElement("td"); td.textContent=v;
 if(index===5){
         td.className="characterSearchSpecial";
