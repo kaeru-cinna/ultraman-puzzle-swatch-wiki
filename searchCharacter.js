@@ -29,8 +29,7 @@ characterSearchSelectedTags.clear(); renderTags(); renderTable(); });
 
 function sortJa(arr){return arr.sort((a,b)=>a.localeCompare(b,"ja"));}
 
-function renderTags(){ tagArea.innerHTML=""; const tags=[…new
-Set(characterSearchCharacters.flatMap(c=>c.tags))];
+function renderTags(){ tagArea.innerHTML=""; const tags = [...new Set(characterSearchCharacters.flatMap(c => c.tags))];
 sortJa(tags).forEach(tag=>{ const b=document.createElement("button");
 b.type="button";
 b.className="characterSearchTagButton"+(characterSearchSelectedTags.has(tag)?"
@@ -43,7 +42,7 @@ tagArea.appendChild(b); }); }
 function renderTable(){ tbody.innerHTML=""; let
 list=[…characterSearchCharacters].sort((a,b)=>a.name.localeCompare(b.name,"ja"));
 if(characterSearchSelectedTags.size){
-list=list.filter(c=>[…characterSearchSelectedTags].every(t=>c.tags.includes(t)));
+list=list.filter(c=>[...characterSearchSelectedTags].every(t=>c.tags.includes(t)));
 } resultCount.textContent="検索結果："+list.length+"件";
 noResult.style.display=list.length?"none":"block"; list.forEach(c=>{
 const tr=document.createElement("tr");
