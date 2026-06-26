@@ -48,6 +48,9 @@ noResult.style.display=list.length?"none":"block"; list.forEach(c=>{
 const tr=document.createElement("tr");
 [c.name,c.rarity,c.class,c.special,c.ability,c.rinkCard].forEach(v=>{
 const td=document.createElement("td"); td.textContent=v;
+if(index===5){
+        td.className="characterSearchSpecial";
+}
 tr.appendChild(td); }); tbody.appendChild(tr); }); }
 
 renderTags(); renderTable();
