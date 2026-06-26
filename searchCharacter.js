@@ -32,8 +32,8 @@ function sortJa(arr){return arr.sort((a,b)=>a.localeCompare(b,"ja"));}
 function renderTags(){ tagArea.innerHTML=""; const tags = [...new Set(characterSearchCharacters.flatMap(c => c.tags))];
 sortJa(tags).forEach(tag=>{ const b=document.createElement("button");
 b.type="button";
-b.className="characterSearchTagButton"+(characterSearchSelectedTags.has(tag)?"
-characterSearchTagSelected":""); b.textContent=tag; b.onclick=()=>{
+b.className = "characterSearchTagButton" + (characterSearchSelectedTags.has(tag) ? " characterSearchTagSelected" : "");
+b.textContent=tag; b.onclick=()=>{
 if(characterSearchSelectedTags.has(tag))
 characterSearchSelectedTags.delete(tag); else
 characterSearchSelectedTags.add(tag); renderTags(); renderTable(); };
