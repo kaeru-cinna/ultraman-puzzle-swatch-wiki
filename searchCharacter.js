@@ -1,8 +1,16 @@
 const characterSearchCharacters=[
+{name:"ウルトラマンゼロ",
+ rarity:"☆4",
+ class:"マン",
+ special:"・3列の敵に5460%のダメージを与える\n・ブーメランを3個生成する",
+ ability:"・ブーメラン攻撃力+40%",
+ rinkCard:"・『大怪獣バトル』-セブンの息子-\n・『大怪獣バトル』(ゼロVSベリアル)",
+ tags:["ブーメラン生成","ブーメラン攻撃"]
+ },
 {name:"ウルトラマン",
  rarity:"◇4",
  class:"マン",
- special:"・1列の敵に3150%ダメージ。\n・1ターン味方の通常攻撃45%アップ",
+ special:"・1列の敵に3150%ダメージ\n・1ターン味方の通常攻撃45%アップ",
  ability:"・基本攻撃力+23%",
  rinkCard:"・ウルトラヒーローズ\n・『ウルトラマン』",
  tags:["基本攻撃","通常攻撃"]
@@ -13,7 +21,7 @@ const characterSearchCharacters=[
  special:"・青ピースを自属性ピースに変換。\n・ロケットを1つ生成する",
  ability:"・最大LP+15%",
  rinkCard:"なし",
- tags:["属性(青)","ピース変換","ロケット","LP"]
+ tags:["属性(青)","ピース変換","ロケット生成","LP"]
  }
  ];
 
@@ -51,7 +59,7 @@ const tr=document.createElement("tr");
     td.textContent = v;
 
     if(index===3 || index===4 || index===5){
-        td.className = "characterSearchSpecial";
+        td.className = "characterSearchTableText";
     }
 
     tr.appendChild(td); }); tbody.appendChild(tr); }); }
