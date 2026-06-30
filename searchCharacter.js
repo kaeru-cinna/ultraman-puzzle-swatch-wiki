@@ -2,10 +2,22 @@ const characterSearchCharacters=[
 {name:"ウルトラマンゼロ",
  rarity:"☆4",
  class:"マン",
- special:"・3列の敵に5460%のダメージを与える\n・ブーメランを3個生成する",
+ special:"・3列の敵に5460%のダメージを与える\n
+          ・ブーメランを3個生成する",
  ability:"・ブーメラン攻撃力+40%",
- rinkCard:"・『大怪獣バトル』-セブンの息子-\n・『大怪獣バトル』(ゼロVSベリアル)",
+ rinkCard:"・『大怪獣バトル』-セブンの息子-\n
+           ・『大怪獣バトル』(ゼロVSベリアル)",
  tags:["ブーメラン生成","ブーメラン攻撃"]
+ },
+{name:"ウルトラマンゼロ\n(ウルトラゼロマント)",
+ rarity:"☆4",
+ class:"マン",
+ special:"・3列の敵に5460%のダメージを与える\n
+          ・盤面のピースを12個消去する",
+ ability:"・ブーメラン攻撃力+40%",
+ rinkCard:"・『大怪獣バトル』-セブンの息子-\n
+           ・『大怪獣バトル』(ゼロVSベリアル)",
+ tags:["ピース消去","通常攻撃"]
  },
 {name:"ウルトラマン",
  rarity:"◇4",
@@ -58,7 +70,7 @@ const tr=document.createElement("tr");
     const td = document.createElement("td");
     td.textContent = v;
 
-    if(index===3 || index===4 || index===5){
+    if(index===0 || index===3 || index===4 || index===5){
         td.className = "characterSearchTableText";
     }
 
