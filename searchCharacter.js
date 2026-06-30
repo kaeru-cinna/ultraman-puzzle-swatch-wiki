@@ -2,7 +2,7 @@ const characterSearchCharacters=[
 {name:"ウルトラマン",
  rarity:"◇4",
  class:"マン",
- special:"・1列の敵に3150%ダメージ。<br>・1ターン味方の通常攻撃45%アップ",
+ special:"・1列の敵に3150%ダメージ。\n・1ターン味方の通常攻撃45%アップ",
  ability:"・基本攻撃力+23%",
  rinkCard:"・ウルトラヒーローズ\n・『ウルトラマン』",
  tags:["基本攻撃","通常攻撃"]
@@ -47,10 +47,13 @@ list=list.filter(c=>[...characterSearchSelectedTags].every(t=>c.tags.includes(t)
 noResult.style.display=list.length?"none":"block"; list.forEach(c=>{
 const tr=document.createElement("tr");
 [c.name,c.rarity,c.class,c.special,c.ability,c.rinkCard].forEach((v,index)=>{
-const td=document.createElement("td"); td.textContent=v;
-if(index===5){
-        td.className="characterSearchSpecial";
-}
-tr.appendChild(td); }); tbody.appendChild(tr); }); }
+    const td = document.createElement("td");
+    td.textContent = v;
+
+    if(index===3 || index===4 || index===5){
+        td.className = "characterSearchSpecial";
+    }
+
+    tr.appendChild(td); }); tbody.appendChild(tr); }); }
 
 renderTags(); renderTable();
