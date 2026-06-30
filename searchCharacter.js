@@ -1,7 +1,6 @@
 const characterSearchCharacters=[
 {name:"ウルトラマンゼロ",
  rarity:"☆4",
- class:"マン",
  special:"・3列の敵に5460%のダメージを与える\n・ブーメランを3個生成する",
  ability:"・ブーメラン攻撃力+40%",
  rinkCard:"・『大怪獣バトル』-セブンの息子-\n・『大怪獣バトル』(ゼロVSベリアル)",
@@ -9,15 +8,13 @@ const characterSearchCharacters=[
  },
 {name:"ウルトラマンゼロ\n(ウルトラゼロマント)",
  rarity:"☆4",
- class:"マン",
  special:"・3列の敵に5460%のダメージを与える\n・盤面のピースを12個消去する",
- ability:"・ブーメラン攻撃力+40%",
+ ability:"・通常攻撃力+35%",
  rinkCard:"・『大怪獣バトル』-セブンの息子-\n・『大怪獣バトル』(ゼロVSベリアル)",
  tags:["ピース消去","通常攻撃"]
  },
 {name:"ウルトラマン",
  rarity:"◇4",
- class:"マン",
  special:"・1列の敵に3150%ダメージ\n・1ターン味方の通常攻撃45%アップ",
  ability:"・基本攻撃力+23%",
  rinkCard:"・ウルトラヒーローズ\n・『ウルトラマン』",
@@ -25,7 +22,6 @@ const characterSearchCharacters=[
  },
 {name:"ババルウ",
  rarity:"◇1",
- class:"怪獣",
  special:"・青ピースを自属性ピースに変換。\n・ロケットを1つ生成する",
  ability:"・最大LP+15%",
  rinkCard:"なし",
@@ -62,11 +58,11 @@ list=list.filter(c=>[...characterSearchSelectedTags].every(t=>c.tags.includes(t)
 } resultCount.textContent="検索結果："+list.length+"件";
 noResult.style.display=list.length?"none":"block"; list.forEach(c=>{
 const tr=document.createElement("tr");
-[c.name,c.rarity,c.class,c.special,c.ability,c.rinkCard].forEach((v,index)=>{
+[c.name,c.rarity,c.special,c.ability,c.rinkCard].forEach((v,index)=>{
     const td = document.createElement("td");
     td.textContent = v;
 
-    if(index===0 || index===3 || index===4 || index===5){
+    if(index===0 || index===2 || index===3 || index===4){
         td.className = "characterSearchTableText";
     }
 
