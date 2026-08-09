@@ -47,15 +47,14 @@ document.getElementById("scoreForm").addEventListener("submit", function(e) {
 
   if (maxHp > 0 && currentHp > 0) {
     let hpRate = currentHp / maxHp;
-    hpRate = Math.round(hpRate * 10000) / 10000;
     hpRate = Math.max(0, Math.min(1, hpRate));
 
     const maxBonus = 0.5;
     const hpBonus = hpRate * maxBonus;
 
-    finalScore = hpRate*100;//(1 + hpBonus);
+    finalScore *= (1 + hpBonus);
   }
-  /*finalScore += (1 + military * coefficients.military_power);
+  finalScore += (1 + military * coefficients.military_power);
   
   finalScore = Math.floor(finalScore);
   
@@ -65,7 +64,7 @@ document.getElementById("scoreForm").addEventListener("submit", function(e) {
     scoreNotation = (finalScore / 1000000).toFixed(1) + "M";
   } else if(finalScore >= 100000){
     scoreNotation = (finalScore / 1000).toFixed(1) + "K";    
-  }*/
+  }
 
   document.getElementById("score-result").textContent =
     "最終スコア: " + finalScore.toLocaleString()+"( " + scoreNotation + " )";
