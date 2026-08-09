@@ -52,7 +52,7 @@ document.getElementById("scoreForm").addEventListener("submit", function(e) {
     const maxBonus = 0.5;
     const hpBonus = hpRate * maxBonus;
 
-    finalScore = hpRate//(1 + hpBonus);
+    finalScore = hpRate;//(1 + hpBonus);
   }
   /*finalScore += (1 + military * coefficients.military_power);
   
