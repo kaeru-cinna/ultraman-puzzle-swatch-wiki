@@ -47,8 +47,8 @@ document.getElementById("scoreForm").addEventListener("submit", function(e) {
 
   if (maxHp > 0 && currentHp > 0) {
     let hpRate = currentHp / maxHp;
-    hpRate = Math.max(0, Math.min(1, hpRate));
     hpRate = Math.round(hpRate * 100) / 100;
+    hpRate = Math.max(0, Math.min(1, hpRate));
 
     const maxBonus = 0.5;
     const hpBonus = hpRate * maxBonus;
