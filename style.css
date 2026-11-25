@@ -411,3 +411,29 @@ footer {
   }
 }
 
+/* ===== ダメージ計算 入力項目の左揃え ===== */
+
+#score-calculator {
+  text-align: left;
+}
+
+.damage-input-grid {
+  justify-items: stretch;
+}
+
+.damage-field {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  width: 100%;
+}
+
+.damage-field input {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  text-align: left;
+}
+
