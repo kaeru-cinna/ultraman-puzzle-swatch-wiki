@@ -42,47 +42,6 @@ const allFields = [
   ...damageFields
 ];
 
-// 入力欄作成
-function createInputs(fields, targetId) {
-  const target = document.getElementById(targetId);
-
-  fields.forEach(name => {
-    const div = document.createElement("div");
-    div.className = "damage-field";
-
-    const label = document.createElement("label");
-    label.textContent = name;
-    label.htmlFor = "damage-" + name;
-
-    const input = document.createElement("input");
-    input.type = "number";
-    input.step = "any";
-    input.id = "damage-" + name;
-    input.placeholder = "0";
-
-    if (
-      coreFields.includes(name) ||
-      name === "ステージバフ" ||
-      damageFields.includes(name)
-    ) {
-      input.value = "1";
-    } else {
-      input.value = "0";
-    }
-
-    input.addEventListener("input", calculate);
-
-    div.appendChild(label);
-    div.appendChild(input);
-    target.appendChild(div);
-  });
-}
-
-// 入力欄生成
-createInputs(basicFields, "basicInputs");
-createInputs(coreFields, "coreInputs");
-createInputs(otherFields, "otherInputs");
-createInputs(damageFields, "damageInputs");
 
 // 入力値取得
 function getValue(name) {
