@@ -1,92 +1,193 @@
 
-<div id="score-calculator">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>パズシュワ ダメージ計算</title>
+  <meta name="description" content="ウルトラマンパズルシュワッチ パズシュワ 攻略 まとめ ダメージ 計算">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2529205461735673"
+     crossorigin="anonymous"></script>
+</head>
+<body>
 
-  <h1 id="score-title">ダメージ計算</h1>
+<!-- 共通ヘッダー -->
+<div id="header"></div>
 
-  <a href="DamageCalculationOTS.html">OTSはこちら</a>
+<p class="notice">
+※当サイトは非公式ファン攻略サイトです。
+</p>
 
-  <h3>基本攻撃・加算項目</h3>
+<div class="container">
 
-  <div class="damage-input-grid">
-    <div class="damage-field">基本攻撃
-      <input type="number" id="damage-基本攻撃" value="0">
+  <!-- 共通目次 -->
+  <div id="toc-area"></div>
+
+  <!-- メイン -->
+  <main>
+
+    <div id="score-calculator">
+
+      <h1 id="score-title">ダメージ計算</h1>
+
+      <a href="DamageCalculationOTS.html">OTSはこちら</a>
+
+      <h3>基本攻撃・加算項目</h3>
+
+      <div class="damage-input-grid">
+
+        <div class="damage-field">基本攻撃
+          <input type="number" id="damage-基本攻撃" value="0" step="any">
+        </div>
+
+        <div class="damage-field">キャラ1
+          <input type="number" id="damage-キャラ1" value="0" step="any">
+        </div>
+
+        <div class="damage-field">キャラ2
+          <input type="number" id="damage-キャラ2" value="0" step="any">
+        </div>
+
+        <div class="damage-field">キャラ3
+          <input type="number" id="damage-キャラ3" value="0" step="any">
+        </div>
+
+        <div class="damage-field">キャラ4
+          <input type="number" id="damage-キャラ4" value="0" step="any">
+        </div>
+
+        <div class="damage-field">キャラ5
+          <input type="number" id="damage-キャラ5" value="0" step="any">
+        </div>
+
+        <div class="damage-field">リンクカード合計値
+          <input type="number" id="damage-リンクカード合計値" value="0" step="any">
+        </div>
+
+        <div class="damage-field">ウルトラメカ
+          <input type="number" id="damage-ウルトラメカ" value="0" step="any">
+        </div>
+
+      </div>
+
+      <hr>
+
+      <h3>コア倍率</h3>
+
+      <div class="damage-input-grid">
+
+        <div class="damage-field">コア1
+          <input type="number" id="damage-コア1" value="1" step="any">
+        </div>
+
+        <div class="damage-field">コア2
+          <input type="number" id="damage-コア2" value="1" step="any">
+        </div>
+
+        <div class="damage-field">コア3
+          <input type="number" id="damage-コア3" value="1" step="any">
+        </div>
+
+        <div class="damage-field">コア4
+          <input type="number" id="damage-コア4" value="1" step="any">
+        </div>
+
+        <div class="damage-field">コア5
+          <input type="number" id="damage-コア5" value="1" step="any">
+        </div>
+
+        <div class="damage-field">コア6
+          <input type="number" id="damage-コア6" value="1" step="any">
+        </div>
+
+        <div class="damage-field">コア7
+          <input type="number" id="damage-コア7" value="1" step="any">
+        </div>
+
+        <div class="damage-field">コア8
+          <input type="number" id="damage-コア8" value="1" step="any">
+        </div>
+
+      </div>
+
+      <hr>
+
+      <h3>その他の補正</h3>
+
+      <div class="damage-input-grid">
+
+        <div class="damage-field">上限補正
+          <input type="number" id="damage-上限補正" value="0" step="any">
+        </div>
+
+        <div class="damage-field">敵防御力
+          <input type="number" id="damage-敵防御力" value="10" step="any">
+        </div>
+
+        <div class="damage-field">ステージバフ（100＝1倍）
+          <input type="number" id="damage-ステージバフ" value="100" step="any">
+        </div>
+
+      </div>
+
+      <hr>
+
+      <h3>ダメージアップ</h3>
+
+      <div class="damage-input-grid">
+
+        <div class="damage-field">ダメージアップ1
+          <input type="number" id="damage-ダメージアップ1" value="1" step="any">
+        </div>
+
+        <div class="damage-field">ダメージアップ2
+          <input type="number" id="damage-ダメージアップ2" value="1" step="any">
+        </div>
+
+        <div class="damage-field">ダメージアップ3
+          <input type="number" id="damage-ダメージアップ3" value="1" step="any">
+        </div>
+
+        <div class="damage-field">ダメージアップ4
+          <input type="number" id="damage-ダメージアップ4" value="1" step="any">
+        </div>
+
+        <div class="damage-field">ダメージアップ5
+          <input type="number" id="damage-ダメージアップ5" value="1" step="any">
+        </div>
+
+      </div>
+
+      <hr>
+
+      <h3>計算結果</h3>
+
+      <div id="damage-results">
+        <div id="results"></div>
+      </div>
+
+      <button type="button" id="resetButton">
+        入力値をリセット
+      </button>
+
     </div>
-    <div class="damage-field">キャラ1
-      <input type="number" id="damage-キャラ1" value="0">
-    </div>
-    <div class="damage-field">キャラ2
-      <input type="number" id="damage-キャラ2" value="0">
-    </div>
-    <div class="damage-field">キャラ3
-      <input type="number" id="damage-キャラ3" value="0">
-    </div>
-    <div class="damage-field">キャラ4
-      <input type="number" id="damage-キャラ4" value="0">
-    </div>
-    <div class="damage-field">キャラ5
-      <input type="number" id="damage-キャラ5" value="0">
-    </div>
-    <div class="damage-field">リンクカード合計値
-      <input type="number" id="damage-リンクカード合計値" value="0">
-    </div>
-    <div class="damage-field">ウルトラメカ
-      <input type="number" id="damage-ウルトラメカ" value="0">
-    </div>
-  </div>
 
-  <hr>
+  </main>
 
-  <h3>コア倍率</h3>
-
-  <div class="damage-input-grid">
-    <div class="damage-field">コア1<input type="number" id="damage-コア1" value="1" step="any"></div>
-    <div class="damage-field">コア2<input type="number" id="damage-コア2" value="1" step="any"></div>
-    <div class="damage-field">コア3<input type="number" id="damage-コア3" value="1" step="any"></div>
-    <div class="damage-field">コア4<input type="number" id="damage-コア4" value="1" step="any"></div>
-    <div class="damage-field">コア5<input type="number" id="damage-コア5" value="1" step="any"></div>
-    <div class="damage-field">コア6<input type="number" id="damage-コア6" value="1" step="any"></div>
-    <div class="damage-field">コア7<input type="number" id="damage-コア7" value="1" step="any"></div>
-    <div class="damage-field">コア8<input type="number" id="damage-コア8" value="1" step="any"></div>
-  </div>
-
-  <hr>
-
-  <h3>その他の補正</h3>
-
-  <div class="damage-input-grid">
-    <div class="damage-field">上限補正
-      <input type="number" id="damage-上限補正" value="0" step="any">
-    </div>
-    <div class="damage-field">敵防御力
-      <input type="number" id="damage-敵防御力" value="10" step="any">
-    </div>
-    <div class="damage-field">ステージバフ（100＝1倍）
-      <input type="number" id="damage-ステージバフ" value="100" step="any">
-    </div>
-  </div>
-
-  <hr>
-
-  <h3>ダメージアップ</h3>
-
-  <div class="damage-input-grid">
-    <div class="damage-field">ダメージアップ1<input type="number" id="damage-ダメージアップ1" value="1" step="any"></div>
-    <div class="damage-field">ダメージアップ2<input type="number" id="damage-ダメージアップ2" value="1" step="any"></div>
-    <div class="damage-field">ダメージアップ3<input type="number" id="damage-ダメージアップ3" value="1" step="any"></div>
-    <div class="damage-field">ダメージアップ4<input type="number" id="damage-ダメージアップ4" value="1" step="any"></div>
-    <div class="damage-field">ダメージアップ5<input type="number" id="damage-ダメージアップ5" value="1" step="any"></div>
-  </div>
-
-  <hr>
-
-  <h3>計算結果</h3>
-
-  <div id="damage-results">
-    <div id="results"></div>
-  </div>
-
-  <button type="button" id="resetButton">
-    入力値をリセット
-  </button>
+  <!-- サイドバー -->
+  <aside>
+    <div id="article-area"></div>
+  </aside>
 
 </div>
+
+<footer>
+  © ウルトラマンパズルシュワッチ攻略まとめ
+</footer>
+
+<script src="DamageCalculation.js" defer></script>
+<script src="include.js" defer></script>
+
+</body>
+</html>
