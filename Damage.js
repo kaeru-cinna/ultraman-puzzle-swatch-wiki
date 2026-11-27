@@ -33,8 +33,10 @@ document.getElementById("scoreForm").addEventListener("submit", function(e) {
 
   // 基本ダメージ計算
   finalDamage = bombAttack * stageSupport * enemyDefense;
-
-  finalDamage = limitDamage + ((finalDamage - limitDamage) * 0.01);
+  
+  if (finalDamage > limitDamage) {
+    finalDamage = limitDamage + ((finalDamage - limitDamage) * 0.01);
+  }
 
   // ダメージアップ入力値
   const v1 = Number(document.getElementById("v1").value) || 0;
