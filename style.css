@@ -325,3 +325,15 @@ footer {
   font-weight: bold;
 }
 
+#damage-button {
+  margin-top: 20px;
+  padding: 8px 20px;
+  cursor: pointer;
+}
+
+#damage-result {
+  margin-top: 25px;
+  font-size: 22px;
+  font-weight: bold;
+}
+

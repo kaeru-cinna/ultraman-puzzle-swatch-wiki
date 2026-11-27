@@ -27,68 +27,65 @@
   <main>
     <div id="score-calculator">
 
-  <h1 id="score-title">襲来スコア計算</h1>
+  <h1 id="score-title">ダメージ計算</h1>
+  <a href="DamageCalculation.html">スコア計算はこちら</a>
   <a href="DamageCalculationOTS.html">OTSはこちら</a>
   
   <div class="score-row">
-    編成戦力
-    <input type="number" id="military">
+    ダメージ上限補正
+    <input type="number" id="upperLimit">
   </div>
 
   <div class="score-row">
-    現在スコア
-    <input type="number" id="baseScore">
+    ボム攻撃力
+    <input type="number" id="bombAttack">
   </div>
 
-  <hr>
-
   <div class="score-row">
-    最大HP <input type="number" id="maxHp">
-  </div>
-  <div class="score-row">
-    現在HP <input type="number" id="currentHp">
+    敵防御力
+    <input type="number" id="enemyDefense">
   </div>
 
   <hr>
 
   <form id="scoreForm">
-
+  
     <div class="score-row">
-      <input type="checkbox" id="bonus1Enable" checked>
-      ボムボーナス：ブーメラン 
+      <input type="checkbox" id="damage6Enable" checked>
+      ステージバフ(〇〇〇〇%)
+      <input type="number" id="stageGimmick">
+    </div>
+    <div class="score-row">
+      <input type="checkbox" id="damage1Enable" checked>
+      ダメージアップ1
       <input type="number" id="v1">
     </div>
     <div class="score-row">
-      <input type="checkbox" id="bonus2Enable" checked>
-      ボムボーナス：ナパーム 
+      <input type="checkbox" id="damage2Enable" checked>
+      ダメージアップ2
       <input type="number" id="v2">
     </div>
     <div class="score-row">
-      <input type="checkbox" id="bonus3Enable" checked>
-      ボムボーナス：ロケット 
+      <input type="checkbox" id="damage3Enable" checked>
+      ダメージアップ3 
       <input type="number" id="v3">
     </div>
     <div class="score-row">
-      <input type="checkbox" id="bonus4Enable" checked>
-      ボムボーナス：サークル 
+      <input type="checkbox" id="damage4Enable" checked>
+      ダメージアップ4
       <input type="number" id="v4">
     </div>
     <div class="score-row">
-      <input type="checkbox" id="bonus5Enable" checked>
-      ピースボーナス
+      <input type="checkbox" id="damage5Enable" checked>
+      ダメージアップ5
       <input type="number" id="v5">
     </div>
-    <div class="score-row">
-      <input type="checkbox" id="bonus6Enable" checked>
-      必殺技ボーナス 
-      <input type="number" id="v6">
-    </div>
 
-    <button type="submit" id="score-button">計算する</button>
+    <button type="submit" id="damage-button">計算する</button>
 
   </form>
 
-  <div id="score-result">最終スコア: 0</div>
+  <div id="damage-result">最終スコア: 0</div>
 
 </div>
 
@@ -105,7 +102,8 @@
   © ウルトラマンパズルシュワッチ攻略まとめ
 </footer>
 
-<script src="DamageCalculation.js" defer></script>
+<script src="Damage.js" defer></script>
 <script src="include.js" defer></script>
 </body>
 </html>
+
