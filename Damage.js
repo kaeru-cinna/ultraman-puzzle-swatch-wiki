@@ -3,11 +3,22 @@ document.getElementById("scoreForm").addEventListener("submit", function(e) {
 
   const upperLimit = Number(document.getElementById("upperLimit").value) || 0;
   const bombAttack = Number(document.getElementById("bombAttack").value) || 0;
-  const enemyDefense = Number(document.getElementById("enemyDefense").value) || 0;
-  const stageGimmick = Number(document.getElementById("stageGimmick").value) || 0;
-
+  const enemyDefense = document.querySelector(
+    'input[name="enemyDefense"]:checked');
+  
   let finalDamage = 0;
   let damageNotation;
+  let stageGimmick = 1;
+  
+  if (document.getElementById("damage6Enable").checked) {
+     stageGimmick = ( stageGimmick / 100 );
+  }
+  
+  upperLimit = ( upperLimit * 0.7535 );
+
+  finalDamage = bombAttack * stageGimmick * enemyDefense;
+  
+  finalDamage = upperLimit + ((finalDamage - upperLimit) * 0.01);
 
   const v1 = Number(document.getElementById("v1").value) || 0;
   const v2 = Number(document.getElementById("v2").value) || 0;
@@ -32,7 +43,6 @@ document.getElementById("scoreForm").addEventListener("submit", function(e) {
     finalDamage *= (1 + v5 / 100);
   }
 
-  //ここからしたは残す
   finalDamage = Math.floor(finalDamage);
   
   if (finalDamage >= 100000000000) {
