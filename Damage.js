@@ -1,206 +1,71 @@
+document.getElementById("scoreForm").addEventListener("submit", function(e) {
+  e.preventDefault();
 
-const basicFields = [
-  "基本攻撃",
-  "キャラ1",
-  "キャラ2",
-  "キャラ3",
-  "キャラ4",
-  "キャラ5",
-  "リンクカード合計値",
-  "ウルトラメカ"
-];
+  const base = Number(document.getElementById("baseScore").value) || 0;
+  const maxHp = Number(document.getElementById("maxHp").value) || 0;
+  const currentHp = Number(document.getElementById("currentHp").value) || 0;
+  const military = Number(document.getElementById("military").value) || 0;
 
-const coreFields = [
-  "コア1",
-  "コア2",
-  "コア3",
-  "コア4",
-  "コア5",
-  "コア6",
-  "コア7",
-  "コア8"
-];
-
-const otherFields = [
-  "上限補正",
-  "敵防御力",
-  "ステージバフ"
-];
-
-const damageFields = [
-  "ダメージアップ1",
-  "ダメージアップ2",
-  "ダメージアップ3",
-  "ダメージアップ4",
-  "ダメージアップ5"
-];
-
-const allFields = [
-  ...basicFields,
-  ...coreFields,
-  ...otherFields,
-  ...damageFields
-];
-
-
-// 入力値取得
-function getValue(name) {
-  const input = document.getElementById("damage-" + name);
-
-  if (input.value.trim() === "") {
-    return 0;
-  }
-
-  return Number(input.value);
-}
-
-// 敵防御力変換
-function getEnemyDefense() {
-  const defense = getValue("敵防御力");
-
-  const defenseTable = {
-    10: 0.9091,
-    30: 0.7692,
-    85: 0.5405,
-    215: 0.3175,
-    1000: 0.909
+  const coefficients = {
+    boomerang: 0.01,
+    napalm: 0.01,
+    locket: 0.01,
+    circle: 0.01,
+    peace: 0.0035,
+    special_move: 0.02,
+    military_power: 500
   };
 
-  if (
-    !Object.prototype.hasOwnProperty.call(
-      defenseTable,
-      defense
-    )
-  ) {
-    return null;
+  let finalScore = base;
+  let scoreNotation;
+
+  const v1 = Number(document.getElementById("v1").value) || 0;
+  const v2 = Number(document.getElementById("v2").value) || 0;
+  const v3 = Number(document.getElementById("v3").value) || 0;
+  const v4 = Number(document.getElementById("v4").value) || 0;
+  const v5 = Number(document.getElementById("v5").value) || 0;
+  const v6 = Number(document.getElementById("v6").value) || 0;
+
+  if (document.getElementById("bonus1Enable").checked) {
+    finalScore *= (1 + v1 * coefficients.boomerang);
+  }
+  if (document.getElementById("bonus2Enable").checked) {
+    finalScore *= (1 + v2 * coefficients.napalm);
+  }
+  if (document.getElementById("bonus3Enable").checked) {
+    finalScore *= (1 + v3 * coefficients.locket);
+  }
+  if (document.getElementById("bonus4Enable").checked) {
+    finalScore *= (1 + v4 * coefficients.circle);
+  }
+  if (document.getElementById("bonus5Enable").checked) {
+    finalScore *= (1 + v5 * coefficients.peace);
+  }
+  if (document.getElementById("bonus6Enable").checked) {
+    finalScore *= (1 + v6 * coefficients.special_move);
   }
 
-  return defenseTable[defense];
-}
+  if (maxHp > 0 && currentHp > 0) {
+    let hpRate = currentHp / maxHp;
+    hpRate = Math.max(0, Math.min(1, hpRate));
 
-// 数値表示
-function formatNumber(value) {
-  if (!Number.isFinite(value)) {
-    return "計算不能";
+    const maxBonus = 0.5;
+    const hpBonus = hpRate * maxBonus;
+
+    finalScore *= (1 + hpBonus);
+  }
+  finalScore += (1 + military * coefficients.military_power);
+  
+  finalScore = Math.floor(finalScore);
+  
+  if (finalScore >= 100000000000) {
+    scoreNotation = (finalScore / 1000000000).toFixed(1) + "B";
+  }else if (finalScore >= 100000000) {
+    scoreNotation = (finalScore / 1000000).toFixed(1) + "M";
+  } else if(finalScore >= 100000){
+    scoreNotation = (finalScore / 1000).toFixed(1) + "K";    
   }
 
-  return value.toLocaleString("ja-JP", {
-    maximumFractionDigits: 10
-  });
-}
-
-// 計算処理
-function calculate() {
-
-  const resultsElement = document.getElementById("results");
-
-  // 敵防御力チェック
-  const enemyDefense = getEnemyDefense();
-
-  if (enemyDefense === null) {
-    resultsElement.innerHTML = `
-      <div class="damage-error">
-        エラー：敵防御力は10、30、85、215、1000
-        のいずれかを入力してください。
-      </div>
-    `;
-    return;
-  }
-
-  // 基本攻撃・加算項目
-  const baseSum = basicFields.reduce(
-    (sum, name) => sum + getValue(name),
-    0
-  );
-
-  // コア倍率
-  const coreMultiplier = coreFields.reduce(
-    (result, name) => result * getValue(name),
-    1
-  );
-
-  // 値A
-  const A = baseSum * coreMultiplier;
-
-  // ステージバフ（入力値÷100）
-  const stageBuff = getValue("ステージバフ") / 100;
-
-  // 値B
-  const B = A * stageBuff * enemyDefense;
-
-  // 値C
-  const C = getValue("上限補正") * 0.7535;
-
-  // 値D
-  const D = B - C;
-
-  // 値E
-  const E = D * 0.01;
-
-  // 値F
-  const F = D + E;
-
-  // ダメージアップ倍率
-  const damageMultiplier = damageFields.reduce(
-    (result, name) => result * getValue(name),
-    1
-  );
-
-  // 値G
-  const G = F * damageMultiplier;
-
-  // 計算結果
-  const results = [
-    ["値A", A],
-    ["値B", B],
-    ["値C", C],
-    ["値D", D],
-    ["値E", E],
-    ["値F", F],
-    ["値G（最終ダメージ）", G]
-  ];
-
-  resultsElement.innerHTML = results.map(
-    ([name, value], index) => `
-      <div class="damage-result-row ${
-        index === 6 ? "damage-final" : ""
-      }">
-        <span>${name}</span>
-        <strong>${formatNumber(value)}</strong>
-      </div>
-    `
-  ).join("");
-}
-
-// リセット
-function resetAll() {
-
-  allFields.forEach(name => {
-
-    const input = document.getElementById(
-      "damage-" + name
-    );
-
-    if (
-      coreFields.includes(name) ||
-      name === "ステージバフ" ||
-      damageFields.includes(name)
-    ) {
-      input.value = 1;
-    } else {
-      input.value = 0;
-    }
-
-  });
-
-  calculate();
-}
-
-// リセットボタン
-document.getElementById("resetButton").addEventListener(
-  "click",
-  resetAll
-);
-
-// 初回計算
-calculate();
+  document.getElementById("score-result").textContent =
+    "最終スコア: " + finalScore.toLocaleString()+"( " + scoreNotation + " )";
+});
