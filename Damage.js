@@ -9,7 +9,7 @@ document.getElementById("scoreForm").addEventListener("submit", function(e) {
   let limitDamage = 0;
   let finalDamage = 0;
   let damageNotation;
-  let stageSupport = 1;
+  let stageSupport = 0;
   
   if (document.getElementById("damage6Enable").checked) {
      stageSupport = ( stageGimmick / 100 );
