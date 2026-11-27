@@ -6,7 +6,6 @@ document.getElementById("scoreForm").addEventListener("submit", function(e) {
   const enemyDefense = Number(document.getElementById("enemyDefense").value) || 0;
   const stageGimmick = Number(document.getElementById("stageGimmick").value) || 0;
 
-
   let finalDamage = 0;
   let damageNotation;
 
@@ -15,6 +14,7 @@ document.getElementById("scoreForm").addEventListener("submit", function(e) {
   const v3 = Number(document.getElementById("v3").value) || 0;
   const v4 = Number(document.getElementById("v4").value) || 0;
   const v5 = Number(document.getElementById("v5").value) || 0;
+  
 
   if (document.getElementById("damage1Enable").checked) {
     finalDamage *= (1 + v1 / 100);
