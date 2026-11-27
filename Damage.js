@@ -3,22 +3,23 @@ document.getElementById("scoreForm").addEventListener("submit", function(e) {
 
   const upperLimit = Number(document.getElementById("upperLimit").value) || 0;
   const bombAttack = Number(document.getElementById("bombAttack").value) || 0;
-  const enemyDefense = document.querySelector(
-    'input[name="enemyDefense"]:checked');
+  const enemyDefense = Number(document.querySelector('input[name="enemyDefense"]:checked').value);
+  const stageGimmick = Number(document.getElementById("stageGimmick").value) || 0;
   
+  let limitDamage = 0;
   let finalDamage = 0;
   let damageNotation;
-  let stageGimmick = 1;
+  let stageSupport = 1;
   
   if (document.getElementById("damage6Enable").checked) {
-     stageGimmick = ( stageGimmick / 100 );
+     stageSupport = ( stageGimmick / 100 );
   }
   
-  upperLimit = ( upperLimit * 0.7535 );
+  limitDamage = ( upperLimit * 0.7535 );
 
-  finalDamage = bombAttack * stageGimmick * enemyDefense;
+  finalDamage = bombAttack * stageSupport * enemyDefense;
   
-  finalDamage = upperLimit + ((finalDamage - upperLimit) * 0.01);
+  finalDamage = limitDamage + ((finalDamage - limitDamage) * 0.01);
 
   const v1 = Number(document.getElementById("v1").value) || 0;
   const v2 = Number(document.getElementById("v2").value) || 0;
